@@ -1,0 +1,28 @@
+@use './reset.scss';
+@use '../components/common/header';
+@use '../components/carousel';
+@use '../components/movieCard';
+
+@use '../pages/movieDetails';
+
+$app-bg: #f9f9f9;
+
+body {
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	font-family: sans-serif;
+	background: $app-bg;
+}
+
+.app {
+	padding: 2rem;
+
+	h1 {
+		color: #333;
+	}
+}
+
+section {
+	margin: 1em;
+}
