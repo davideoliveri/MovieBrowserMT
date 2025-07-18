@@ -1,11 +1,27 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import { useMovieDetails, MovieDetailsData } from '../api/movieById'
+import { useMovieDetails } from '../api/movieById'
 import { Layout } from '../components/Layout'
+import { useWishlist } from '../store/whislist'
 
 export const MovieDetails: React.FC = () => {
-	const { id } = useParams<{ id: string }>()
-	const { movie, loading, error } = useMovieDetails(id)
+	const { id: movieId } = useParams<{ id: string }>()
+	const { movie, loading, error } = useMovieDetails(movieId)
+	const { state: entries, dispatch } = useWishlist()
+	const [isWishlisted, setIsWishlisted] = useState<boolean>(false)
+
+	useEffect(() => {
+		if (!movie) return
+		setIsWishlisted(entries.some(entry => entry.id === movie.id))
+	}, [movie, entries])
+
+	const addRemoveFromWishlist = () => {
+		if (isWishlisted) {
+			dispatch({ type: 'REMOVE', id: movie.id })
+		} else {
+			dispatch({ type: 'ADD', entry: {id: movie.id, dateAdded: Date.now()} })
+		}
+	}
 
 	return (
 		<Layout>
@@ -26,18 +42,17 @@ export const MovieDetails: React.FC = () => {
 							<div className="movie-details__meta">
 								<p><strong>Release:</strong> {movie.release_date}</p>
 								<p><strong>Runtime:</strong> {movie.runtime} min</p>
-								<p><strong>Score:</strong> {movie.vote_average}/10</p>
+								<p><strong>Score:</strong> {movie.vote_average.toFixed(1)}</p>
+								<h2>Overview</h2>
+								<p>{movie.overview}</p>
+								<button onClick={addRemoveFromWishlist}>{isWishlisted ? 'Remove from' : 'Add to'} Wishlist</button>
 							</div>
 						</div>
-						<section className="movie-details__overview">
-							<h2>Overview</h2>
-							<p>{movie.overview}</p>
-						</section>
 						{movie.credits.cast.length > 0 && (
 							<section className="movie-details__cast">
 								<h2>Cast</h2>
 								<ul className="movie-details__cast-list">
-									{movie.credits.cast.slice(0, 8).map((c) => (
+									{movie.credits.cast.map((c) => (
 										<li key={c.cast_id} className="movie-details__cast-member">
 											{c.profile_path && (
 												<img
@@ -48,7 +63,9 @@ export const MovieDetails: React.FC = () => {
 											)}
 											<div className="movie-details__cast-member-info">
 												<p className="movie-details__cast-member-name">{c.name}</p>
-												<p className="movie-details__cast-member-character">as {c.character}</p>
+												{c.character &&
+													<p className="movie-details__cast-member-character">as {c.character}</p>
+												}
 											</div>
 										</li>
 									))}

@@ -1,11 +1,12 @@
-import React, { useState } from 'react'
-import { useMoviesByGenre, Movie } from '../api/moviesByGenre';
+import React from 'react'
+import { useMoviesByGenre } from '../api/moviesByGenre';
+import { Movie } from '../interfaces/MovieInterface';
 import { MovieCard } from '../components/movieCard';
 
 enum Genres {
 	Animation = 16,
 	Action = 28,
-	Horror= 27,
+	Horror = 27,
 	Comedy = 35,
 	Drama = 18
 }
@@ -19,7 +20,6 @@ interface CarouselProps {
 
 export const Carousel: React.FC<CarouselProps> = ({ genreName }): React.ReactNode => {
 	const genreID: number = Genres[genreName];
-	const [genre, setGenre] = useState<number>(Genres[genreName])
 	const { movies, loading, error } = useMoviesByGenre(genreID)
 	return <>
 		<h2 className='carousel__title'>Carousel - {genreName}</h2>

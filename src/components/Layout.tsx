@@ -14,10 +14,10 @@ export const Layout: React.FC<LayoutProps> = ({ children }): React.ReactNode => 
 						<Link to="/">Home</Link>
 					</li>
 					<li>
-						<Link to="/movie:id">About</Link>
+						{/* <Link to="/movie:id">About</Link> */}
 					</li>
 					<li>
-						<Link to="/wishlist">Users</Link>
+						<Link to="/wishlist">Wishlist</Link>
 					</li>
 				</ul>
 			</nav>

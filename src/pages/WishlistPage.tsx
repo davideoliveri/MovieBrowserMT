@@ -1,0 +1,97 @@
+// src/pages/WishlistPage.tsx
+import React, { useState, useEffect } from 'react'
+import { Layout } from '../components/Layout'
+import { useWishlistMovies, SortKey, Order } from '../api/wishlistMovies'
+import { MovieCard } from '../components/movieCard'
+
+export const WishlistPage: React.FC = () => {
+  const [page, setPage] = useState(1)
+  const [sortBy, setSortBy] = useState<SortKey>('dateAdded')
+  const [order, setOrder] = useState<Order>('desc')
+
+  const {
+    movies,
+    total,
+    pages,
+    loading,
+    error
+  } = useWishlistMovies({ page, perPage: 20, sortBy, order })
+
+  useEffect(() => {
+    if (page > pages) {
+      setPage(pages > 0 ? pages : 1)
+    }
+  }, [pages, page])
+
+  return (
+    <Layout>
+      <main className="wishlist-page">
+        <h1 className="wishlist-page__title">Your Wishlist</h1>
+
+        <div className="wishlist-page__controls">
+          <label>
+            Sort by:
+            <select
+              value={sortBy}
+              onChange={e => setSortBy(e.target.value as SortKey)}
+              className="wishlist-page__select"
+            >
+              <option value="dateAdded">Date Added</option>
+              <option value="score">Score</option>
+              <option value="releaseDate">Release Date</option>
+            </select>
+          </label>
+          <button
+            className="wishlist-page__toggle-order"
+            onClick={() => setOrder(o => (o === 'asc' ? 'desc' : 'asc'))}
+          >
+            {order === 'asc' ? '↑' : '↓'}
+          </button>
+        </div>
+
+        {loading && <p className="wishlist-page__status">Loading…</p>}
+        {error && <p className="wishlist-page__error">Error: {error}</p>}
+        {!loading && !error && movies.length === 0 && (
+          <p className="wishlist-page__status">No movies in your wishlist.</p>
+        )}
+        <section>
+
+          <ul className="wishlist-page__grid">
+            {movies.map(movie => (
+              <MovieCard
+                key={movie.id}
+                id={Number(movie.id)}
+                title={movie.title}
+                posterPath={movie.poster_path}
+                releaseDate={movie.release_date}
+                voteAverage={String(movie.vote_average.toFixed(1))}
+              />
+            ))}
+          </ul>
+        </section>
+
+        {pages > 1 && (
+          <div className="wishlist-page__pagination">
+            <button
+              disabled={page <= 1}
+              onClick={() => setPage(p => p - 1)}
+              className="wishlist-page__btn"
+            >
+              Prev
+            </button>
+            <span className="wishlist-page__page-info">
+              Page {page} of {pages} ({total} total)
+            </span>
+            <button
+              disabled={page >= pages}
+              onClick={() => setPage(p => p + 1)}
+              className="wishlist-page__btn"
+            >
+              Next
+            </button>
+          </div>
+        )}
+      </main>
+    </Layout>
+  )
+}

@@ -1,0 +1,11 @@
+.movie-card {
+	min-width: 200px;
+	min-height: 200px;
+	background-color: antiquewhite;
+	gap: 2em;
+	
+	&__poster {
+		// max-width: 200px;
+		width: 100%;
+	}
+}

@@ -1,12 +1,5 @@
 import { useState, useEffect } from 'react'
-
-export interface Movie {
-  id: number
-  title: string
-  vote_average: number
-  poster_path: string | null
-  release_date: string
-}
+import { Movie } from '../interfaces/MovieInterface'
 
 export function useMoviesByGenre(genreId: number) {
   const [movies, setMovies] = useState<Movie[]>([])
