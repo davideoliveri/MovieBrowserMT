@@ -1,10 +1,12 @@
 # yo, man!
 the requirements are in the [requirements/Req.pdf](requirements/Req.pdf) file
+# yo, man!
+the requirements are in the [requirements/Req.pdf](requirements/Req.pdf) file
 
 ## instructions 
 1. clone the repo and enter it
 0. copy or rename the file `.env.example` to `.env`
-0. in this new `.env` file replace `<your_tmdb_api_key>` with your actual TMDB API key (see below for instructions about hoe to get it)
+0. in this new `.env` file replace `<your_tmdb_api_key>` with your actual TMDB API key (see below for instructions about how to get it)
 0. run `npm install` (or your flavour of package manager)
 0. run `npm run dev` 
 0. go to [https://localhost:5173](https://localhost:5173)
