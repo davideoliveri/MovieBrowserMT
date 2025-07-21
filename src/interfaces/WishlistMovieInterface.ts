@@ -1,8 +1,4 @@
-import { CastMember } from './CastMemberInterface'
-import { MovieDetailsData } from './MovieDetailsDataInterface'
-
-/** Combines the API data plus the dateAdded metadata */
+import { MovieDetailsData } from './MovieDetailsDataInterface';
 export interface WishlistMovie extends MovieDetailsData {
-  /** guaranteed on these objects */
-  dateAdded: number 
+  dateAdded: number;
 }
