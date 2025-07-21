@@ -1,7 +1,7 @@
 import { useState, useEffect, useMemo } from "react";
 import { WishlistMovie }   from '../interfaces/WishlistMovieInterface'
 import { WishlistEntry } from "../interfaces/WishlistEntryInterface";
-import { useWishlist } from '../store/whislist'
+import { useWishlist } from '../store/wishlistContext'
 import { UseWishlistMoviesOptions } from "../interfaces/UseWishlistMoviesOptionsInterface";
 
 interface UseWishlistMoviesResult {

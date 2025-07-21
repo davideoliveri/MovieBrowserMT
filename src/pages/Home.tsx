@@ -1,6 +1,5 @@
-import React, { ReactNode, useState } from 'react'
 import { Layout } from '../components/Layout';
-import { Carousel } from '../components/carousel';
+import { Carousel } from '../components/Carousel';
 
 export const HomePage: React.FC = () => {
 	return (

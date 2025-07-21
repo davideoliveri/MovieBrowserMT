@@ -1,11 +1,6 @@
-import React from 'react'
 import { Link } from 'react-router-dom'
 
-interface HeaderProps {
-
-}
-
-export const Header: React.FC<HeaderProps> = () => {
+export const Header: React.FC = () => {
 	return <>
 		<nav className='header'>
 			<ul className='header__menu'>

@@ -1,10 +1,4 @@
-import React from 'react'
-
-interface FooterProps {
-
-}
-
-export const Footer: React.FC<FooterProps> = () => {
+export const Footer: React.FC = () => {
 	return (
 		<footer>
 			Copyright © {new Date().getFullYear()}

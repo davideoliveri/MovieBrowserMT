@@ -1,4 +1,3 @@
-import React from 'react'
 import { MovieCard } from './MovieCard';
 import { API } from '../api/API';
 import { Genres, CarouselProps } from '../interfaces/CarouselPropsInterface'
