@@ -1,22 +1,22 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { MovieCardProps } from '../interfaces/MovieCardPropsInterface';
-import { AddRemoveFromWishlist } from './addOrRemoveFromWishlistButton';
+import { MovieDetailsData } from '../interfaces/MovieDetailsDataInterface';
+import { AddRemoveFromWishlist } from './AddOrRemoveFromWishlistButton';
 
 const basePosterURL: string = "https://image.tmdb.org/t/p/";
 const maxThumbnailsize = 300;
 
-export const MovieCard: React.FC<MovieCardProps> = (props): React.ReactNode => {
+export const MovieCard: React.FC<MovieDetailsData> = (props): React.ReactNode => {
 	return (
 		<li className='movie-card'>
-			<Link to={`/moviedetails/${props.id}`} className="movie-card">
-				<img className="movie-card__poster" src={basePosterURL + `w${maxThumbnailsize}` + props.posterPath} alt={'poster for ' + props.title} />
+			<Link to={`/moviedetails/${props.id}`} className="movie-card__link">
+				<img className="movie-card__poster" src={basePosterURL + `w${maxThumbnailsize}` + props.poster_path} alt={'poster for ' + props.title} />
 			</Link>
-			<AddRemoveFromWishlist movieId={props.id}></AddRemoveFromWishlist>
-			<h3>Title: {props.title}</h3>
-			<h3>Release date: {props.releaseDate}</h3>
-			<h3>Score: {props.voteAverage}</h3>
-			<h2>ID: {props.id}</h2>
+			<AddRemoveFromWishlist movieId={props.id} movieGenre=''></AddRemoveFromWishlist>
+			<h4 className="h4">{props.title}</h4>
+			<h5 className="h5">Release date: {props.release_date}</h5>
+			<h4 className="h4">Score: {props.vote_average}</h4>
 		</li>
 	)
 }

@@ -1,0 +1,33 @@
+// Color palette
+$color-primary: #31ebf5;
+$color-secondary: #ff4081;
+$color-dark: #111;
+$color-light: #f5f5f5;
+
+$genreToColors: (
+	"sciencefiction": ("color": "#c3ebef", "background-color": "#020024", "background": "linear-gradient(146deg,rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 1) 35%, rgba(0, 212, 255, 1) 100%);"),
+	"horror": ("color":"#fbe293", "background-color": "#833AB4", "background": "linear-gradient(90deg, rgba(131, 58, 180, 1) 0%, rgba(253, 29, 29, 1) 50%, rgb(47 77 143) 100%)"),
+	"animation": ("color":"#052a27", "background-color": "#2A7B9B", "background": "linear-gradient(141deg,rgba(42, 123, 155, 1) 0%, rgba(87, 199, 133, 1) 50%, rgba(237, 221, 83, 1) 100%);"),
+);
+
+// Spacing scale (px)
+$space-0: 0;
+$space-1: 4px;
+$space-2: 8px;
+$space-3: 16px;
+$space-4: 24px;
+$space-5: 32px;
+
+$breakpoints: (
+	"xs": 0,
+	// default / mobile‑first
+	"sm": 480px,
+	// small phones
+	"md": 768px,
+	// tablets
+	"lg": 1024px,
+	// small laptops
+	"xl": 1280px,
+	// desktops
+	"xxl": 1440px // large desktops
+);

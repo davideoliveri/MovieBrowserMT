@@ -1,0 +1,67 @@
+@use "sass:map";
+@use "sass:string";
+@use '../styles/abstract/variables.scss' as vars;
+
+.add-to-wishlist-button {
+	width: 100%;
+	background-color: vars.$color-primary;
+	padding: vars.$space-2;
+}
+
+/* ---------- base style shared by all ---------- */
+.add-to-wishlist-button {
+	display: block;
+	/* full‑width bar like in your mockups */
+	width: auto;
+	padding: .6rem 1rem;
+	border: none;
+	cursor: pointer;
+	color: #fff;
+	transition: .3s ease;
+	/* smooth hover */
+
+	&--horror {
+		color: string.unquote(map.get(map.get(vars.$genreToColors, "horror"), "color"));
+		--bg1: #4b0000;
+		/* dark crimson */
+		--bg2: #ff2400;
+		/* bright blood‑red */
+		background: linear-gradient(135deg, var(--bg1), var(--bg2));
+		clip-path: polygon(0 0, 100% 0, 95% 100%, 5% 100%);
+		/* ragged bottom edge */
+		box-shadow: 0 0 10px rgba(139, 0, 0, .8);
+
+		&:hover {
+			filter: brightness(1.2) drop-shadow(0 0 6px crimson);
+		}
+	}
+
+	&--sciencefiction {
+		color: string.unquote(map.get(map.get(vars.$genreToColors, "sciencefiction"), "color"));
+		--neon: #00e5ff;
+		background: #000;
+		box-shadow:
+			0 0 8px var(--neon),
+			0 0 12px var(--neon) inset;
+		text-shadow: 0 0 4px var(--neon);
+		letter-spacing: .5px;
+
+		&:hover {
+			box-shadow:
+				0 0 12px var(--neon),
+				0 0 24px var(--neon) inset;
+		}
+	}
+
+	&--animation {
+		color: string.unquote(map.get(map.get(vars.$genreToColors, "animation"), "color"));
+		background: linear-gradient(45deg,
+				#ff5f6d, #ffc371, #00d2ff, #3a7bd5);
+		border-radius: 900px;
+
+		&:hover {
+			transform: scale(1.05) rotate(-2deg);
+		}
+	}
+
+}

@@ -2,35 +2,31 @@ import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { useMovieDetails } from '../api/movieById'
 import { Layout } from '../components/Layout'
-import { useWishlist } from '../store/whislist'
+import { AddRemoveFromWishlist } from '../components/AddOrRemoveFromWishlistButton'
+import { genreClasses } from '../enums/genresClasses'
 
 export const MovieDetails: React.FC = () => {
 	const { id: movieId } = useParams<{ id: string }>()
 	const { movie, loading, error } = useMovieDetails(movieId)
-	const { state: entries, dispatch } = useWishlist()
-	const [isWishlisted, setIsWishlisted] = useState<boolean>(false)
+	
+	type genreKeys = keyof typeof genreClasses;
+	const mainGenreName: genreKeys = movie?.genres?.at(0)?.name || "Drama";
+	
+	let genreClassModifier;
 
-	useEffect(() => {
-		if (!movie) return
-		setIsWishlisted(entries.some(entry => entry.id === movie.id))
-	}, [movie, entries])
-
-	const addRemoveFromWishlist = () => {
-		if (isWishlisted) {
-			dispatch({ type: 'REMOVE', id: movie.id })
-		} else {
-			dispatch({ type: 'ADD', entry: {id: movie.id, dateAdded: Date.now()} })
-		}
+	if(mainGenreName) {
+		genreClassModifier = genreClasses[mainGenreName]
+	} else {
+		genreClassModifier = "";
 	}
-
+	
 	return (
 		<Layout>
-			<main className="movie-details">
+			<main className={`movie-details movie-details--${genreClassModifier}`}>
 				{loading && <p>Loading details…</p>}
 				{error && <p className="movie-details__error">Error: {error}</p>}
 				{movie && (
 					<>
-						<h1 className="movie-details__title">{movie.title}</h1>
 						<div className="movie-details__info">
 							{movie.poster_path && (
 								<img
@@ -40,17 +36,20 @@ export const MovieDetails: React.FC = () => {
 								/>
 							)}
 							<div className="movie-details__meta">
+								<h1 className="h1 movie-details__title">{movie.title}</h1>
+								<AddRemoveFromWishlist movieId={movie.id} movieGenre={genreClassModifier} />
 								<p><strong>Release:</strong> {movie.release_date}</p>
 								<p><strong>Runtime:</strong> {movie.runtime} min</p>
 								<p><strong>Score:</strong> {movie.vote_average.toFixed(1)}</p>
-								<h2>Overview</h2>
 								<p>{movie.overview}</p>
-								<button onClick={addRemoveFromWishlist}>{isWishlisted ? 'Remove from' : 'Add to'} Wishlist</button>
+								{movie.genres?.map((genre) => {
+									return <span key={genre.id}>{genre.name} </span>
+								})}
 							</div>
 						</div>
-						{movie.credits.cast.length > 0 && (
+						{movie.credits?.cast && movie.credits?.cast.length > 0 && (
 							<section className="movie-details__cast">
-								<h2>Cast</h2>
+								<h2 className="h2">Cast</h2>
 								<ul className="movie-details__cast-list">
 									{movie.credits.cast.map((c) => (
 										<li key={c.cast_id} className="movie-details__cast-member">

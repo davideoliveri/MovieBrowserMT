@@ -1,29 +1,31 @@
-@use './reset.scss';
+@use '../styles/abstract/variables';
+
+@use './base/reset';
+@use './base/fonts';
+@use './base/typography';
+@use './base/utilities';
+
+@use './layout/container';
+
 @use '../components/common/header';
 @use '../components/carousel';
 @use '../components/movieCard';
+@use '../components/addOrRemoveFromWishlistButton';
 
-@use '../pages/movieDetails';
-@use '../pages/wishlistPage.scss';
+
+@use '../pages/movieDetailsPage';
+@use '../pages/wishlistPage';
 
 $app-bg: #f9f9f9;
 
 body {
-	width: 100%;
-	margin: 0;
-	padding: 0;
-	font-family: sans-serif;
 	background: $app-bg;
+	font-size: 16px;
 }
 
 .app {
-	padding: 2rem;
-
-	h1 {
-		color: #333;
-	}
-}
-
-section {
-	margin: 1em;
+	// padding: 1rem;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
 }

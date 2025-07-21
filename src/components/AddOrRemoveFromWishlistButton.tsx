@@ -3,9 +3,10 @@ import { useWishlist } from '../store/whislist'
 
 interface addRemoveFromWishlistProps {
 	movieId: number
+	movieGenre: string
 }
 
-export const AddRemoveFromWishlist: React.FC<addRemoveFromWishlistProps> = ({ movieId }): React.ReactNode => {
+export const AddRemoveFromWishlist: React.FC<addRemoveFromWishlistProps> = ({ movieId, movieGenre }): React.ReactNode => {
 	const [isWishlisted, setIsWishlisted] = useState<boolean>(false)
 	const { state: entries, dispatch } = useWishlist()
 
@@ -24,6 +25,6 @@ export const AddRemoveFromWishlist: React.FC<addRemoveFromWishlistProps> = ({ mo
 		setIsWishlisted(entries.some(entry => entry.id === movieId))
 	}, [movieId, entries])
 
-	return <button onClick={addRemoveFromWishlist}>{isWishlisted ? 'Remove from' : 'Add to'} Wishlist</button>
+	return <button className={`add-to-wishlist-button add-to-wishlist-button--${movieGenre}`} onClick={addRemoveFromWishlist}>{isWishlisted ? '❤️ Remove from' : '🤍 Add to'} Wishlist</button>
 
 }

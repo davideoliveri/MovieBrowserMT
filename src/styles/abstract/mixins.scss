@@ -1,0 +1,39 @@
+@use 'variables' as *; // pulls in $breakpoints map
+@use 'sass:map';
+@use 'sass:meta';
+
+/// Media‑query helper
+/// @param $point  – breakpoint key *or* a raw length (e.g. 42rem)
+/// @param $type   – 'min', 'max', or 'between' (default: 'min')
+/// @param $upper  – upper breakpoint key/length for 'between'
+@mixin mq($point, $type: min, $upper: null) {
+	// Resolve given keys to actual lengths
+	$from: if(meta.type-of($point)=="string", map.get($breakpoints, $point), $point);
+	$to: if($upper !=null,
+			if(meta.type-of($upper)=="string", map.get($breakpoints, $upper), $upper),
+			null);
+
+	@if $type ==min {
+		@media (min-width: #{$from}) {
+			@content;
+		}
+	}
+
+	@else if $type ==max {
+
+		// subtract 0.02px to avoid overlaps with the next min‑width query
+		@media (max-width: calc(#{$from} - 0.02px)) {
+			@content;
+		}
+	}
+
+	@else if $type ==between and $to !=null {
+		@media (min-width: #{$from}) and (max-width: calc(#{$to} - 0.02px)) {
+			@content;
+		}
+	}
+
+	@else {
+		@error "mq(): invalid parameters";
+	}
+}

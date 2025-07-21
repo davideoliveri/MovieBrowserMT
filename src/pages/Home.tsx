@@ -5,17 +5,11 @@ import { Carousel } from '../components/carousel';
 export const HomePage: React.FC = () => {
 	return (
 		<Layout>
-			<main className='homepage'>
-				<h1>Welcome back!</h1>
-				<section>
-					<Carousel genreName={"Horror"}></Carousel>
-				</section>
-				<section>
-					<Carousel genreName={"Animation"}></Carousel>
-				</section>
-				<section>
-					<Carousel genreName={"Comedy"}></Carousel>
-				</section>
+			<main className='homepage container'>
+				<h1 className="h1 text-center">Welcome back!</h1>
+				<Carousel genreName={"Science Fiction"}></Carousel>
+				<Carousel genreName={"Horror"}></Carousel>
+				<Carousel genreName={"Animation"}></Carousel>
 			</main>
 		</Layout>
 	)

@@ -26,7 +26,7 @@ export const WishlistPage: React.FC = () => {
   return (
     <Layout>
       <main className="wishlist-page">
-        <h1 className="wishlist-page__title">Your Wishlist</h1>
+        <h1 className="h1 wishlist-page__title">Your Wishlist</h1>
 
         <div className="wishlist-page__controls">
           <label>
@@ -62,9 +62,9 @@ export const WishlistPage: React.FC = () => {
                 key={movie.id}
                 id={Number(movie.id)}
                 title={movie.title}
-                posterPath={movie.poster_path}
-                releaseDate={movie.release_date}
-                voteAverage={String(movie.vote_average.toFixed(1))}
+                poster_path={movie.poster_path}
+                release_date={movie.release_date}
+                vote_average={Number(movie.vote_average.toFixed(1))}
               />
             ))}
           </ul>

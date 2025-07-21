@@ -8,7 +8,7 @@ interface HeaderProps {
 export const Header: React.FC<HeaderProps> = () => {
 	return <>
 		<nav className='header'>
-			<ul>
+			<ul className='header__menu'>
 				<li>
 					<Link to="/">Home</Link>
 				</li>

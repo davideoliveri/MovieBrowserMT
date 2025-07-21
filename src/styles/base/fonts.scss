@@ -1,0 +1,48 @@
+$font-path: "/src/assets/fonts/";
+
+$system-stack: -apple-system, BlinkMacSystemFont, "Segoe UI",
+	Roboto, Oxygen, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+
+@font-face {
+	font-family: "Inter";
+	src: url("#{$font-path}Inter-VariableFont.woff2") format("woff2-variations");
+	font-weight: 100 900;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "AkayaKanadaka";
+	src: url("#{$font-path}AkayaKanadaka-Regular.woff2") format("woff2-variations");
+	font-weight: 400 900;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "Baumans";
+	src: url("#{$font-path}Baumans-Regular.woff2") format("woff2-variations");
+	font-weight: 400 900;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "SyneMono";
+	src: url("#{$font-path}SyneMono-Regular.woff2") format("woff2-variations");
+	font-weight: 400 900;
+	font-display: swap;
+}
+
+$fontFaceToGenreMap: (
+	"animation": ("fontFamily": "AkayaKanadaka", "fontSize": "22px"),
+	"sciencefiction": ("fontFamily": "Baumans", "fontSize": "20px"),
+	"horror": ("fontFamily": "SyneMono", "fontSize": "20px")
+);
+
+:root {
+	--font-base: "Inter",
+	#{$system-stack};
+}
+
+body {
+	font-family: var(--font-base);
+}
+
