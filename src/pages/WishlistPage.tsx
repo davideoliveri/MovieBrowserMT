@@ -1,8 +1,10 @@
 // src/pages/WishlistPage.tsx
 import React, { useState, useEffect } from 'react'
 import { Layout } from '../components/Layout'
-import { useWishlistMovies, SortKey, Order } from '../api/wishlistMovies'
-import { MovieCard } from '../components/movieCard'
+import { MovieCard } from '../components/MovieCard'
+
+import { SortKey, Order } from '../interfaces/UseWishlistMoviesOptionsInterface'
+import { API } from '../api/API'
 
 export const WishlistPage: React.FC = () => {
   const [page, setPage] = useState(1)
@@ -15,7 +17,7 @@ export const WishlistPage: React.FC = () => {
     pages,
     loading,
     error
-  } = useWishlistMovies({ page, perPage: 20, sortBy, order })
+  } = API.getWishlistMovies({ page, perPage: 20, sortBy, order })
 
   useEffect(() => {
     if (page > pages) {

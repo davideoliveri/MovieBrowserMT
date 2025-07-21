@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import { useMovieDetails } from '../api/movieById'
 import { Layout } from '../components/Layout'
 import { AddRemoveFromWishlist } from '../components/AddOrRemoveFromWishlistButton'
 import { genreClasses } from '../enums/genresClasses'
+import { API } from '../api/API'
 
 export const MovieDetails: React.FC = () => {
 	const { id: movieId } = useParams<{ id: string }>()
-	const { movie, loading, error } = useMovieDetails(movieId)
+	const { movie, loading, error } = API.getMovieById(movieId)
 	
 	type genreKeys = keyof typeof genreClasses;
 	const mainGenreName: genreKeys = movie?.genres?.at(0)?.name || "Drama";

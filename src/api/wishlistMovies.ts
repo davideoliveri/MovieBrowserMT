@@ -1,21 +1,11 @@
-// src/hooks/useWishlistMovies.ts
 import { useState, useEffect, useMemo } from "react";
 import { WishlistMovie }   from '../interfaces/WishlistMovieInterface'
 import { WishlistEntry } from "../interfaces/WishlistEntryInterface";
 import { useWishlist } from '../store/whislist'
-
-export type SortKey = 'dateAdded' | 'score' | 'releaseDate'
-export type Order = 'asc' | 'desc'
-
-interface UseWishlistMoviesOptions {
-	page?: number
-	perPage?: number
-	sortBy?: SortKey
-	order?: Order
-}
+import { UseWishlistMoviesOptions } from "../interfaces/UseWishlistMoviesOptionsInterface";
 
 interface UseWishlistMoviesResult {
-	movies: WishlistMovie[]  // now each has dateAdded
+	movies: WishlistMovie[]
 	total: number
 	pages: number
 	loading: boolean
