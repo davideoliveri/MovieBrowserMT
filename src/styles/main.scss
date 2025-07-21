@@ -12,20 +12,19 @@
 @use '../components/movieCard';
 @use '../components/addOrRemoveFromWishlistButton';
 
-
 @use '../pages/movieDetailsPage';
 @use '../pages/wishlistPage';
 
 $app-bg: #f9f9f9;
 
 body {
-	background: $app-bg;
-	font-size: 16px;
+  background: $app-bg;
+  font-size: 16px;
 }
 
 .app {
-	// padding: 1rem;
-	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
+  // padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }

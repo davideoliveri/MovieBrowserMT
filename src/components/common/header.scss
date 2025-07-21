@@ -1,17 +1,17 @@
-@use '../../styles/abstract/variables'as vars;
+@use '../../styles/abstract/variables' as vars;
 @use '../../styles/abstract/mixins.scss';
 
 .header {
-	background-color: aquamarine;
-	&__menu {
-		display: flex;
-		flex-direction: row;
-		justify-content: space-between;
+  background-color: aquamarine;
+  &__menu {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 
-		padding: vars.$space-3;
+    padding: vars.$space-3;
 
-		@include mixins.mq(md, min) {
-			padding: vars.$space-4;
-		}
-	}
+    @include mixins.mq(md, min) {
+      padding: vars.$space-4;
+    }
+  }
 }

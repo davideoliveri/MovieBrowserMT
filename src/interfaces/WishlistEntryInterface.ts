@@ -1,4 +1,4 @@
 export interface WishlistEntry {
-	id: number
-	dateAdded: number
+  id: number;
+  dateAdded: number;
 }

@@ -1,46 +1,44 @@
-@use "sass:math";
-@use "sass:map";
-@use "sass:string";
+@use 'sass:math';
+@use 'sass:map';
+@use 'sass:string';
 
-@use "./fonts" as fonts;
-@use "../abstract/variables.scss" as vars;
+@use './fonts' as fonts;
+@use '../abstract/variables.scss' as vars;
 
 $h-base-size: 2.3rem; // size for level 1
 $h-scale-ratio: 1.25; // how much each level shrinks
 $h-base-margin: 0.7em; // top/bottom margin for level 1
 
 @mixin m-heading($level) {
-	@if ($level < 1) or ($level > 6) {
-		@error "m-heading(): $level must be 1 through 6.";
-	}
-	$factor: math.pow($h-scale-ratio, $level - 1);
-	font-size: calc($h-base-size / $factor);
-	margin: calc($h-base-margin / $factor) 0;
+  @if ($level < 1) or ($level > 6) {
+    @error "m-heading(): $level must be 1 through 6.";
+  }
+  $factor: math.pow($h-scale-ratio, $level - 1);
+  font-size: calc($h-base-size / $factor);
+  margin: calc($h-base-margin / $factor) 0;
 }
 
 html {
-	font-size: 16px; // for rem
+  font-size: 16px; // for rem
 }
 
 .h {
-	@for $i from 1 through 6 {
-		&#{$i} {
-			@include m-heading($i);
-		}
-	}
+  @for $i from 1 through 6 {
+    &#{$i} {
+      @include m-heading($i);
+    }
+  }
 }
 
 @each $className, $genreSpecs in fonts.$fontFaceToGenreMap {
-	$colorMap: map.get(vars.$genreToColors, $className);
+  $colorMap: map.get(vars.$genreToColors, $className);
 
-	.movie-details--#{$className} {
-		font-family: #{map.get($genreSpecs, "fontFamily")};
-		font-size: #{map.get($genreSpecs, "fontSize")};
-		
-		color: string.unquote(map.get(($colorMap), "color"));
-		background-color: string.unquote(map.get($colorMap, "background-color"));
-		background: string.unquote(map.get($colorMap, "background"));
-	}
+  .movie-details--#{$className} {
+    font-family: #{map.get($genreSpecs, 'fontFamily')};
+    font-size: #{map.get($genreSpecs, 'fontSize')};
+
+    color: string.unquote(map.get(($colorMap), 'color'));
+    background-color: string.unquote(map.get($colorMap, 'background-color'));
+    background: string.unquote(map.get($colorMap, 'background'));
+  }
 }
-
-

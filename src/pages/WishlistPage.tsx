@@ -1,29 +1,31 @@
 // src/pages/WishlistPage.tsx
-import React, { useState, useEffect } from 'react'
-import { Layout } from '../components/Layout'
-import { MovieCard } from '../components/MovieCard'
+import React, { useState, useEffect } from 'react';
+import { Layout } from '../components/Layout';
+import { MovieCard } from '../components/MovieCard';
 
-import { SortKey, Order } from '../interfaces/UseWishlistMoviesOptionsInterface'
-import { API } from '../api/API'
+import {
+  SortKey,
+  Order,
+} from '../interfaces/UseWishlistMoviesOptionsInterface';
+import { API } from '../api/API';
 
 export const WishlistPage: React.FC = () => {
-  const [page, setPage] = useState(1)
-  const [sortBy, setSortBy] = useState<SortKey>('dateAdded')
-  const [order, setOrder] = useState<Order>('desc')
+  const [page, setPage] = useState(1);
+  const [sortBy, setSortBy] = useState<SortKey>('dateAdded');
+  const [order, setOrder] = useState<Order>('desc');
 
-  const {
-    movies,
-    total,
-    pages,
-    loading,
-    error
-  } = API.getWishlistMovies({ page, perPage: 20, sortBy, order })
+  const { movies, total, pages, loading, error } = API.getWishlistMovies({
+    page,
+    perPage: 20,
+    sortBy,
+    order,
+  });
 
   useEffect(() => {
     if (page > pages) {
-      setPage(pages > 0 ? pages : 1)
+      setPage(pages > 0 ? pages : 1);
     }
-  }, [pages, page])
+  }, [pages, page]);
 
   return (
     <Layout>
@@ -35,7 +37,7 @@ export const WishlistPage: React.FC = () => {
             Sort by:
             <select
               value={sortBy}
-              onChange={e => setSortBy(e.target.value as SortKey)}
+              onChange={(e) => setSortBy(e.target.value as SortKey)}
               className="wishlist-page__select"
             >
               <option value="dateAdded">Date Added</option>
@@ -45,7 +47,7 @@ export const WishlistPage: React.FC = () => {
           </label>
           <button
             className="wishlist-page__toggle-order"
-            onClick={() => setOrder(o => (o === 'asc' ? 'desc' : 'asc'))}
+            onClick={() => setOrder((o) => (o === 'asc' ? 'desc' : 'asc'))}
           >
             {order === 'asc' ? '↑' : '↓'}
           </button>
@@ -57,9 +59,8 @@ export const WishlistPage: React.FC = () => {
           <p className="wishlist-page__status">No movies in your wishlist.</p>
         )}
         <section>
-
           <ul className="wishlist-page__grid">
-            {movies.map(movie => (
+            {movies.map((movie) => (
               <MovieCard
                 key={movie.id}
                 id={Number(movie.id)}
@@ -76,7 +77,7 @@ export const WishlistPage: React.FC = () => {
           <div className="wishlist-page__pagination">
             <button
               disabled={page <= 1}
-              onClick={() => setPage(p => p - 1)}
+              onClick={() => setPage((p) => p - 1)}
               className="wishlist-page__btn"
             >
               Prev
@@ -86,7 +87,7 @@ export const WishlistPage: React.FC = () => {
             </span>
             <button
               disabled={page >= pages}
-              onClick={() => setPage(p => p + 1)}
+              onClick={() => setPage((p) => p + 1)}
               className="wishlist-page__btn"
             >
               Next
@@ -95,5 +96,5 @@ export const WishlistPage: React.FC = () => {
         )}
       </main>
     </Layout>
-  )
-}
+  );
+};

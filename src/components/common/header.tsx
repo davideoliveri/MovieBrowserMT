@@ -1,18 +1,19 @@
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 
 export const Header: React.FC = () => {
-	return <>
-		<nav className='header'>
-			<ul className='header__menu'>
-				<li>
-					<Link to="/">Home</Link>
-				</li>
-				<li>
-					{/* <Link to="/movie:id">About</Link> */}
-				</li>
-				<li>
-					<Link to="/wishlist">Wishlist</Link>
-				</li>
-			</ul>
-		</nav></>
-}
+  return (
+    <>
+      <nav className="header">
+        <ul className="header__menu">
+          <li>
+            <Link to="/">Home</Link>
+          </li>
+          <li>{/* <Link to="/movie:id">About</Link> */}</li>
+          <li>
+            <Link to="/wishlist">Wishlist</Link>
+          </li>
+        </ul>
+      </nav>
+    </>
+  );
+};

@@ -1,15 +1,15 @@
 .carousel {
-	min-width: 100%;
-	display: flex;
-	flex-direction: row;
-	gap: 1em;
-	overflow-x: scroll;
-	overflow-y: hidden;
-	&__title {
-		margin: 1em 0;
-	}
-	&__list {
-		display: flex;
-		gap: 1em;
-	}
+  min-width: 100%;
+  display: flex;
+  flex-direction: row;
+  gap: 1em;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  &__title {
+    margin: 1em 0;
+  }
+  &__list {
+    display: flex;
+    gap: 1em;
+  }
 }
