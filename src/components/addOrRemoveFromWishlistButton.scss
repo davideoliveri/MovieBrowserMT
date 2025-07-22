@@ -8,6 +8,7 @@
   padding: vars.$space-2;
   width: auto;
   padding: 0.6rem 1rem;
+  margin-bottom: vars.$space-4;
   border: none;
   cursor: pointer;
   transition: 0.3s ease;
@@ -149,14 +150,15 @@
     background: #000;
     box-shadow:
       0 0 8px var(--neon),
-      0 0 12px var(--neon) inset;
+      0 0 12px var(--neon);
     text-shadow: 0 0 4px var(--neon);
     letter-spacing: 0.5px;
+    border-radius: 20px 0;
 
     &:hover {
       box-shadow:
         0 0 12px var(--neon),
-        0 0 24px var(--neon) inset;
+        0 0 24px var(--neon);
     }
   }
 

@@ -40,19 +40,24 @@ export const MovieDetails: React.FC = () => {
                   movieId={movie.id}
                   movieGenre={genreClassModifier}
                 />
-                <p>
-                  <strong>Release:</strong> {movie.release_date}
+                <p className="movie-details__essential">
+                  <strong> {movie.vote_average.toFixed(1)} | </strong>
+                  <strong> {movie.release_date.split('-')[0]} |</strong>
+                  <strong> {movie.runtime} min </strong>
                 </p>
-                <p>
-                  <strong>Runtime:</strong> {movie.runtime} min
-                </p>
-                <p>
-                  <strong>Score:</strong> {movie.vote_average.toFixed(1)}
-                </p>
-                <p>{movie.overview}</p>
-                {movie.genres?.map((genre) => {
-                  return <span key={genre.id}>{genre.name} </span>;
-                })}
+                <p className="movie-details__overview">{movie.overview}</p>
+                <div className="movie-details__genres">
+                  {movie.genres?.map((genre) => {
+                    return (
+                      <span
+                        className="movie-details__genre-badge"
+                        key={genre.id}
+                      >
+                        {genre.name}{' '}
+                      </span>
+                    );
+                  })}
+                </div>
               </div>
             </div>
             {movie.credits?.cast && movie.credits?.cast.length > 0 && (
