@@ -1,6 +1,6 @@
-import { useMovieById } from './movieById';
-import { useWishlistMovies } from './wishlistMovies';
-import { useMoviesByGenre } from './moviesByGenre';
+import { useMovieById } from './useMovieById';
+import { useWishlistMovies } from './useWishlistMovies';
+import { useMoviesByGenre } from './useMoviesByGenre';
 import { UseWishlistMoviesOptions } from '../interfaces/UseWishlistMoviesOptionsInterface';
 
 export const API = {
