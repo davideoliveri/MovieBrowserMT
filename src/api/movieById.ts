@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { MovieDetailsData } from '../interfaces/MovieDetailsDataInterface';
 
-export function useMovieDetails(id: string | undefined) {
+export function useMovieById(id: string | undefined) {
   const [movie, setMovie] = useState<MovieDetailsData | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
