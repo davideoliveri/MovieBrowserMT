@@ -21,18 +21,20 @@ export function useMoviesByGenre(genreId: number) {
           { signal: controller.signal }
         );
         if (!res.ok) throw new Error(`${res.status} ${res.statusText}`);
-        const data = await res.json();
+        const data = (await res.json()) as { results: Movie[] };
         setMovies(data.results);
-      } catch (err: any) {
-        if (err.name !== 'AbortError') setError(err.message);
+      } catch (err: unknown) {
+        if (err instanceof DOMException && err.name === 'AbortError') return;
+        const msg = err instanceof Error ? err.message : String(err);
+        setError(msg);
       } finally {
         setLoading(false);
       }
     }
 
-    fetchMovies();
+    void fetchMovies();
     return () => {
-      controller.abort;
+      controller.abort();
     };
   }, [genreId]);
 

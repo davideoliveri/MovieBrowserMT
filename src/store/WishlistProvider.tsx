@@ -1,6 +1,6 @@
 import React, { useReducer, useEffect } from 'react';
 import { WishlistEntry } from '../interfaces/WishlistEntryInterface';
-import { WishlistContext } from './wishlistContext'; // Import the context from the new file
+import { WishlistContext } from './wishlistContext';
 
 type State = WishlistEntry[];
 type Action =
@@ -26,7 +26,7 @@ export const WishlistProvider = ({
   const [state, dispatch] = useReducer(reducer, [], () => {
     try {
       const json: string | null = localStorage.getItem('wishlist');
-      return json ? JSON.parse(json) : [];
+      return json ? (JSON.parse(json) as WishlistEntry[]) : [];
     } catch {
       return [];
     }

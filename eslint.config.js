@@ -1,4 +1,3 @@
-// eslint.config.js
 import js from '@eslint/js';
 import tseslint from 'typescript-eslint';
 import reactPlugin from 'eslint-plugin-react';
@@ -15,7 +14,7 @@ export default [
     languageOptions: {
       parser: tseslint.parser,
       parserOptions: {
-        project: './tsconfig.json', // 👈 tell ESLint where types live
+        project: './tsconfig.json',
         tsconfigRootDir: new URL('.', import.meta.url).pathname,
         ecmaFeatures: { jsx: true },
       },

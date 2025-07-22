@@ -2,9 +2,9 @@ import { useState, useEffect } from 'react';
 import { MovieDetailsData } from '../interfaces/MovieDetailsDataInterface';
 
 export function useMovieDetails(id: string | undefined) {
-  const [movie, setMovie] = useState<MovieDetailsData>(null!);
+  const [movie, setMovie] = useState<MovieDetailsData | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
-  const [error, setError] = useState<string>(null!);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     if (!id) return;
@@ -14,23 +14,25 @@ export function useMovieDetails(id: string | undefined) {
 
     async function fetchDetails() {
       setLoading(true);
-      setError(null!);
+      setError(null);
       try {
         const res = await fetch(
           `https://api.themoviedb.org/3/movie/${id}?api_key=${apiKey}&append_to_response=videos,images,credits`,
           { signal: controller.signal }
         );
         if (!res.ok) throw new Error(res.statusText);
-        const data: MovieDetailsData = await res.json();
+        const data: MovieDetailsData = (await res.json()) as MovieDetailsData;
         setMovie(data);
-      } catch (err: any) {
-        if (err.name !== 'AbortError') setError(err.message);
+      } catch (err: unknown) {
+        const message = err instanceof Error ? err.message : String(err);
+        const name = err instanceof Error ? err.name : String(err);
+        if (name !== 'AbortError') setError(message);
       } finally {
         setLoading(false);
       }
     }
 
-    fetchDetails();
+    void fetchDetails();
     return () => {
       controller.abort();
     };

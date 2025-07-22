@@ -15,16 +15,14 @@ interface UseWishlistMoviesResult {
 export function useWishlistMovies(
   opts: UseWishlistMoviesOptions = {}
 ): UseWishlistMoviesResult {
-  const { state: entries } = useWishlist(); // WishlistEntry[] from localStorage
+  const { state: entries } = useWishlist();
   const { page = 1, perPage = 20, sortBy = 'dateAdded', order = 'desc' } = opts;
 
-  // In-memory cache of fetched movie details (without dateAdded)
   const [cache, setCache] = useState<Record<string, WishlistMovie>>({});
 
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  // 1️⃣ Fetch any missing details
   useEffect(() => {
     let cancelled = false;
     const missing = entries
@@ -46,15 +44,17 @@ export function useWishlistMovies(
     )
       .then((fetched) => {
         if (cancelled) return;
-        // build a new cache object
         const updated = { ...cache };
         fetched.forEach((m) => {
           updated[m.id] = m;
         });
         setCache(updated);
       })
-      .catch((err: any) => {
-        if (!cancelled) setError(err.message);
+      .catch((err: unknown) => {
+        if (!cancelled) {
+          const message = err instanceof Error ? err.message : String(err);
+          setError(message);
+        }
       })
       .finally(() => {
         if (!cancelled) setLoading(false);
@@ -65,7 +65,6 @@ export function useWishlistMovies(
     };
   }, [entries, cache]);
 
-  // 2️⃣ Combine entries and cache into full MovieDetailsData with dateAdded
   const allMovies = useMemo<WishlistMovie[]>(() => {
     return entries
       .map((e: WishlistEntry) => {
@@ -79,14 +78,12 @@ export function useWishlistMovies(
       .filter((m): m is WishlistMovie => m != null);
   }, [entries, cache]);
 
-  // 3️⃣ Sort
   const sorted = useMemo(() => {
     const arr = [...allMovies];
     arr.sort((a, b) => {
       let cmp = 0;
       if (sortBy === 'dateAdded') {
-        // a.dateAdded and b.dateAdded are guaranteed by interface
-        cmp = a.dateAdded! - b.dateAdded!;
+        cmp = a.dateAdded - b.dateAdded;
       } else if (sortBy === 'score') {
         cmp = a.vote_average - b.vote_average;
       } else {
@@ -99,7 +96,6 @@ export function useWishlistMovies(
     return arr;
   }, [allMovies, sortBy, order]);
 
-  // 4️⃣ Paginate
   const total = sorted.length;
   const pages = Math.ceil(total / perPage);
   const movies = useMemo(() => {
