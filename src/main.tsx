@@ -1,13 +1,18 @@
+// src/main.tsx
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
+import { BrowserRouter } from 'react-router-dom';
 import { WishlistProvider } from './store/WishlistProvider';
 import './styles/main.scss';
 
-ReactDOM.createRoot(document.getElementById('root')!).render(
+// Use createRoot for client-side rendering
+ReactDOM.createRoot(document.getElementById('app')!).render(
   <React.StrictMode>
     <WishlistProvider>
-      <App />
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
     </WishlistProvider>
   </React.StrictMode>
 );

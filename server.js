@@ -1,4 +1,4 @@
-import fs from 'fs';
+import fs from 'fs/promises';
 import path from 'path';
 import express from 'express';
 import { createServer as createViteServer } from 'vite';
@@ -12,11 +12,7 @@ const Port = process.env.PORT || 3000;
 const Base = process.env.BASE || '/';
 
 const templateHtml = isProduction
-  ? await fs.readFile(
-      './dist/client/index.html',
-      { encoding: 'utf-8' },
-      () => {}
-    )
+  ? await fs.readFile('./dist/client/index.html', { encoding: 'utf-8' })
   : '';
 
 const ssrManifest = isProduction
@@ -36,7 +32,7 @@ let vite;
 if (!isProduction) {
   vite = await createViteServer({
     server: { middlewareMode: true },
-    appType: 'spa',
+    appType: 'custom',
   });
 
   app.use(vite.middlewares);
@@ -68,26 +64,28 @@ app.use('/{*splat}/', async (req, res, next) => {
   if (req.originalUrl === '/favicon.ico') {
     return res.sendFile(path.resolve('./public/vite.svg'));
   }
-
+  let url = req.originalUrl;
   // ! SSR Render - Do not Edit if you don't know what heare whats going on
   let template, render;
-
   try {
     if (!isProduction) {
       template = await vite.transformIndexHtml(
         url,
-        fs.readFileSync(resolve('index.html'), 'utf-8')
+        await fs.readFile(resolve('index.html'), 'utf-8')
       );
       render = (await vite.ssrLoadModule('/src/entry-server.tsx')).render;
     } else {
-      const template = fs.readFileSync(
+      const template = await fs.readFile(
         resolve('dist/client/index.html'),
         'utf-8'
       );
 
       // Load the manifest Vite generated with --ssrManifest
       const manifest = JSON.parse(
-        fs.readFileSync(resolve('dist/client/.vite/ssr-manifest.json'), 'utf-8')
+        await fs.readFile(
+          resolve('./dist/client/.vite/ssr-manifest.json'),
+          'utf-8'
+        )
       );
 
       const { render } = await import('./dist/server/entry-server.js');

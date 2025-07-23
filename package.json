@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "cross-env NODE_ENV=development node ./server.js",
     "build": "npm run build:client && npm run build:server",
-    "build:client": "vite build --ssrManifest --outDir dist/client",
+    "build:client": "cross-env VITE_BUILD_MODE=ssr_client vite build",
     "build:server": "vite build --ssr src/entry-server.tsx --outDir dist/server",
     "serve": "cross-env NODE_ENV=production node ./server.js",
     "preview": "vite preview",
@@ -22,6 +22,7 @@
   },
   "devDependencies": {
     "@react-router/node": "^7.7.0",
+    "@types/node": "^24.1.0",
     "@types/react": "^19.1.8",
     "@types/react-dom": "^19.1.6",
     "@vitejs/plugin-react": "^4.6.0",

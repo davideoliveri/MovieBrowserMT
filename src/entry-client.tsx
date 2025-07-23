@@ -1,11 +1,14 @@
 import { hydrateRoot } from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
-import { AppRoutes } from './AppRoutes';
+import App from './App'; // Import the new App
+import { WishlistProvider } from './store/WishlistProvider';
 import './styles/main.scss';
 
 hydrateRoot(
   document.getElementById('app')!,
-  <BrowserRouter>
-    <AppRoutes />
-  </BrowserRouter>
+  <WishlistProvider>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </WishlistProvider>
 );
