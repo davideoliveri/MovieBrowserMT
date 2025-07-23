@@ -1,4 +1,6 @@
-import { Link } from 'react-router-dom';
+import * as pkg from 'react-router-dom';
+const { Link } = pkg;
+// import { Link } from 'react-router-dom';
 import { MovieDetailsData } from '../interfaces/MovieDetailsDataInterface';
 import { AddRemoveFromWishlist } from './AddOrRemoveFromWishlistButton';
 

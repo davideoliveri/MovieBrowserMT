@@ -22,6 +22,7 @@ export const AddRemoveFromWishlist: React.FC<addRemoveFromWishlistProps> = ({
     } else {
       dispatch({ type: 'ADD', entry: { id: movieId, dateAdded: Date.now() } });
     }
+    console.log('dispatching');
     buttonCopy = isWishlisted
       ? '❤️ Remove from wishlist'
       : '🤍 Add to wishlist';
@@ -30,6 +31,7 @@ export const AddRemoveFromWishlist: React.FC<addRemoveFromWishlistProps> = ({
   useEffect(() => {
     if (!movieId) return;
     setIsWishlisted(entries.some((entry) => entry.id === movieId));
+    console.log('form use effect');
   }, [movieId, entries]);
 
   return (

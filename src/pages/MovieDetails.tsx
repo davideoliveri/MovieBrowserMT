@@ -1,4 +1,6 @@
-import { useParams } from 'react-router-dom';
+import * as pkg from 'react-router-dom';
+const { useParams } = pkg;
+// import { useParams } from 'react-router-dom';
 import { Layout } from '../components/Layout';
 import { AddRemoveFromWishlist } from '../components/AddOrRemoveFromWishlistButton';
 import { genreClasses } from '../enums/genresClasses';
