@@ -1,17 +1,24 @@
-import * as pkg from 'react-router-dom';
-const { Routes, Route } = pkg;
-// import { Routes, Route } from 'react-router-dom';
-
-import { HomePage } from './pages/Home';
-import { MovieDetails } from './pages/MovieDetails';
+import { RouteObject } from 'react-router-dom';
+import { HomePage, loader as homeLoader } from './pages/Home';
+import {
+  MovieDetails,
+  loader as movieDetailsLoader,
+} from './pages/MovieDetails';
 import { WishlistPage } from './pages/WishlistPage';
 
-export const Router = () => {
-  return (
-    <Routes>
-      <Route index element={<HomePage />} />
-      <Route path="/wishlist" element={<WishlistPage />} />
-      <Route path="moviedetails/:id" element={<MovieDetails />} />
-    </Routes>
-  );
-};
+export const routes: RouteObject[] = [
+  {
+    path: '/',
+    element: <HomePage />,
+    loader: homeLoader,
+  },
+  {
+    path: 'moviedetails/:id',
+    element: <MovieDetails />,
+    loader: movieDetailsLoader,
+  },
+  {
+    path: 'wishlist',
+    element: <WishlistPage />,
+  },
+];

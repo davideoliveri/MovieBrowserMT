@@ -1,16 +1,12 @@
-import { useMovieById } from './useMovieById';
 import { useWishlistMovies } from './useWishlistMovies';
-import { useMoviesByGenre } from './useMoviesByGenre';
 import { UseWishlistMoviesOptions } from '../interfaces/UseWishlistMoviesOptionsInterface';
+import { getMovieById } from './getMovieById';
+import { getMoviesByGenre } from './getMoviesByGenre';
 
 export const API = {
-  getMovieById: (movieId: string | undefined) => {
-    return useMovieById(movieId);
-  },
+  getMovieById,
   getWishlistMovies: (opt: UseWishlistMoviesOptions) => {
     return useWishlistMovies(opt);
   },
-  getMoviesByGenre: (genreId: number) => {
-    return useMoviesByGenre(genreId);
-  },
+  getMoviesByGenre,
 };
