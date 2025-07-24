@@ -1,6 +1,6 @@
 import { Routes, Route } from 'react-router';
-import { HomePage } from './pages/Home';
-import { MovieDetails } from './pages/MovieDetails';
+import { HomePage } from './pages/HomePage';
+import { MovieDetails } from './pages/MovieDetailsPage';
 import { WishlistPage } from './pages/WishlistPage';
 
 export function AppRoutes() {

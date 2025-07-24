@@ -1,9 +1,9 @@
 import { RouteObject } from 'react-router-dom';
-import { HomePage, loader as homeLoader } from './pages/Home';
+import { HomePage, loader as homeLoader } from './pages/HomePage';
 import {
   MovieDetails,
   loader as movieDetailsLoader,
-} from './pages/MovieDetails';
+} from './pages/MovieDetailsPage';
 import { WishlistPage } from './pages/WishlistPage';
 
 export const routes: RouteObject[] = [
