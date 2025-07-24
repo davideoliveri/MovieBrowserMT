@@ -1,13 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import App from './App';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { routes } from './router';
 import { WishlistProvider } from './store/WishlistProvider';
 import './styles/main.scss';
 
-ReactDOM.createRoot(document.getElementById('root')!).render(
+const router = createBrowserRouter(routes);
+
+ReactDOM.createRoot(document.getElementById('app')!).render(
   <React.StrictMode>
     <WishlistProvider>
-      <App />
+      <RouterProvider router={router} />
     </WishlistProvider>
   </React.StrictMode>
 );

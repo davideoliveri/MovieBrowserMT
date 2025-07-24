@@ -6,11 +6,14 @@ export const Header: React.FC = () => {
       <nav className="header">
         <ul className="header__menu">
           <li>
-            <Link to="/">Home</Link>
+            <Link className="header__item" to="/">
+              Home
+            </Link>
           </li>
-          <li>{/* <Link to="/movie:id">About</Link> */}</li>
           <li>
-            <Link to="/wishlist">Wishlist</Link>
+            <Link className="header__item" to="/wishlist">
+              Wishlist
+            </Link>
           </li>
         </ul>
       </nav>

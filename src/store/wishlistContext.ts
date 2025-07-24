@@ -2,9 +2,10 @@ import { createContext, useContext } from 'react';
 import { WishlistEntry } from '../interfaces/WishlistEntryInterface';
 
 type State = WishlistEntry[];
-type Action =
+export type Action =
   | { type: 'ADD'; entry: WishlistEntry }
-  | { type: 'REMOVE'; id: number };
+  | { type: 'REMOVE'; id: number }
+  | { type: 'INITIALIZE'; entries: WishlistEntry[] };
 
 export const WishlistContext = createContext<{
   state: State;

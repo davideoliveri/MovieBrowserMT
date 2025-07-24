@@ -1,29 +1,33 @@
-import { useParams } from 'react-router-dom';
+import { useLoaderData } from 'react-router-dom';
 import { Layout } from '../components/Layout';
 import { AddRemoveFromWishlist } from '../components/AddOrRemoveFromWishlistButton';
 import { genreClasses } from '../enums/genresClasses';
 import { API } from '../api/API';
+import { MovieDetailsData } from '../interfaces/MovieDetailsDataInterface';
+import { LoaderFunctionArgs } from 'react-router-dom';
+
+export async function loader({
+  params,
+}: LoaderFunctionArgs): Promise<MovieDetailsData> {
+  const movieId = params.id;
+  if (!movieId) {
+    throw new Response('Movie ID not found', { status: 404 });
+  }
+  const movie = await API.getMovieById(movieId);
+  return movie;
+}
 
 export const MovieDetails: React.FC = () => {
-  const { id: movieId } = useParams<{ id: string }>();
-  const { movie, loading, error } = API.getMovieById(movieId);
+  const movie = useLoaderData() as MovieDetailsData;
 
   type genreKeys = keyof typeof genreClasses;
   const mainGenreName: genreKeys = movie?.genres?.at(0)?.name || 'Drama';
 
-  let genreClassModifier;
-
-  if (mainGenreName) {
-    genreClassModifier = genreClasses[mainGenreName];
-  } else {
-    genreClassModifier = '';
-  }
+  const genreClassModifier = genreClasses[mainGenreName] || '';
 
   return (
     <Layout>
       <main className={`movie-details movie-details--${genreClassModifier}`}>
-        {loading && <p>Loading details…</p>}
-        {error && <p className="movie-details__error">Error: {error}</p>}
         {movie && (
           <>
             <div className="movie-details__info">
@@ -47,16 +51,11 @@ export const MovieDetails: React.FC = () => {
                 </p>
                 <p className="movie-details__overview">{movie.overview}</p>
                 <div className="movie-details__genres">
-                  {movie.genres?.map((genre) => {
-                    return (
-                      <span
-                        className="movie-details__genre-badge"
-                        key={genre.id}
-                      >
-                        {genre.name}{' '}
-                      </span>
-                    );
-                  })}
+                  {movie.genres?.map((genre) => (
+                    <span className="movie-details__genre-badge" key={genre.id}>
+                      {genre.name}
+                    </span>
+                  ))}
                 </div>
               </div>
             </div>
