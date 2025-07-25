@@ -1,4 +1,4 @@
-import { Movie } from '../interfaces/MovieInterface';
+import { Movie } from '../../interfaces/MovieInterface';
 
 export async function getMoviesByGenre(genreId: number): Promise<Movie[]> {
   const apiKey = import.meta.env.VITE_TMDB_API_KEY;
@@ -6,9 +6,7 @@ export async function getMoviesByGenre(genreId: number): Promise<Movie[]> {
     `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&with_genres=${genreId}`
   );
   if (!res.ok) {
-    throw new Response('Failed to fetch movies by genre', {
-      status: res.status,
-    });
+    throw new Error(`Failed to fetch movies (${res.status})`);
   }
   const data = (await res.json()) as { results: Movie[] };
   return data.results;

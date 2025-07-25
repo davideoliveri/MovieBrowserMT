@@ -1,10 +1,10 @@
 import { RouteObject } from 'react-router-dom';
-import { HomePage, loader as homeLoader } from './pages/HomePage';
+import { HomePage, loader as homeLoader } from './pages/HomePage/HomePage';
 import {
-  MovieDetails,
+  MovieDetailsPage,
   loader as movieDetailsLoader,
-} from './pages/MovieDetailsPage';
-import { WishlistPage } from './pages/WishlistPage';
+} from './pages/MovieDetailsPage/MovieDetailsPage';
+import { WishlistPage } from './pages/WishlistPage/WishlistPage';
 
 export const routes: RouteObject[] = [
   {
@@ -14,7 +14,7 @@ export const routes: RouteObject[] = [
   },
   {
     path: 'moviedetails/:id',
-    element: <MovieDetails />,
+    element: <MovieDetailsPage />,
     loader: movieDetailsLoader,
   },
   {

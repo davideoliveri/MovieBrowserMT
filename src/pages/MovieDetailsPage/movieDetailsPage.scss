@@ -1,8 +1,6 @@
-@use '../styles/abstract/variables.scss' as vars;
+@use '../../styles/abstract/variables.scss' as vars;
 
 .movie-details {
-  padding: 2rem;
-
   &__error {
     color: red;
   }

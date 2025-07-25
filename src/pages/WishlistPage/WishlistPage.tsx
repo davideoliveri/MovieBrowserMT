@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { Layout } from '../components/Layout';
-import { MovieCard } from '../components/MovieCard';
+import { Layout } from '../../components/Layout';
+import { MovieCard } from '../../components/MovieCard';
 
 import {
   SortKey,
   Order,
-} from '../interfaces/UseWishlistMoviesOptionsInterface';
-import { API } from '../api/API';
+} from '../../interfaces/WishlistMoviesOptionsInterface';
+import { API } from '../../api/API';
 
 export const WishlistPage: React.FC = () => {
   const [page, setPage] = useState(1);
