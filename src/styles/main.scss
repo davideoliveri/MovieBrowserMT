@@ -12,8 +12,8 @@
 @use '../components/movieCard';
 @use '../components/addOrRemoveFromWishlistButton';
 
-@use '../pages/movieDetailsPage';
-@use '../pages/wishlistPage';
+@use '../pages/MovieDetailsPage/movieDetailsPage';
+@use '../pages/WishlistPage/wishlistPage';
 
 $app-bg: #f9f9f9;
 

@@ -1,9 +1,9 @@
 import { useLoaderData } from 'react-router-dom';
-import { Layout } from '../components/Layout';
-import { AddRemoveFromWishlist } from '../components/AddOrRemoveFromWishlistButton';
-import { genreClasses } from '../enums/genresClasses';
-import { API } from '../api/API';
-import { MovieDetailsData } from '../interfaces/MovieDetailsDataInterface';
+import { Layout } from '../../components/Layout';
+import { AddRemoveFromWishlist } from '../../components/AddOrRemoveFromWishlistButton';
+import { genreClasses } from '../../enums/genresClasses';
+import { API } from '../../api/API';
+import { MovieDetailsData } from '../../interfaces/MovieDetailsDataInterface';
 import { LoaderFunctionArgs } from 'react-router-dom';
 
 export async function loader({
@@ -17,7 +17,7 @@ export async function loader({
   return movie;
 }
 
-export const MovieDetails: React.FC = () => {
+export const MovieDetailsPage: React.FC = () => {
   const movie = useLoaderData() as MovieDetailsData;
 
   type genreKeys = keyof typeof genreClasses;
@@ -27,7 +27,9 @@ export const MovieDetails: React.FC = () => {
 
   return (
     <Layout>
-      <main className={`movie-details movie-details--${genreClassModifier}`}>
+      <main
+        className={`container movie-details movie-details--${genreClassModifier}`}
+      >
         {movie && (
           <>
             <div className="movie-details__info">
