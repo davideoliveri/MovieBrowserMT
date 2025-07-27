@@ -1,10 +1,11 @@
 import { useLoaderData } from 'react-router-dom';
-import { Layout } from '../../components/Layout';
-import { AddRemoveFromWishlist } from '../../components/AddOrRemoveFromWishlistButton';
+import { Layout } from '../../components/Layout/Layout';
+import { AddRemoveFromWishlist } from '../../components/AddOrRemoveFromWishlistButton/AddOrRemoveFromWishlistButton';
 import { genreClasses } from '../../enums/genresClasses';
 import { API } from '../../api/API';
 import { MovieDetailsData } from '../../interfaces/MovieDetailsDataInterface';
 import { LoaderFunctionArgs } from 'react-router-dom';
+import { CastCard } from '../../components/CastCard/CastCard';
 
 export async function loader({
   params,
@@ -67,23 +68,7 @@ export const MovieDetailsPage: React.FC = () => {
                 <ul className="movie-details__cast-list">
                   {movie.credits.cast.map((c) => (
                     <li key={c.cast_id} className="movie-details__cast-member">
-                      {c.profile_path && (
-                        <img
-                          className="movie-details__cast-member-photo"
-                          src={`https://image.tmdb.org/t/p/w185${c.profile_path}`}
-                          alt={c.name}
-                        />
-                      )}
-                      <div className="movie-details__cast-member-info">
-                        <p className="movie-details__cast-member-name">
-                          {c.name}
-                        </p>
-                        {c.character && (
-                          <p className="movie-details__cast-member-character">
-                            as {c.character}
-                          </p>
-                        )}
-                      </div>
+                      <CastCard cast={c} />
                     </li>
                   ))}
                 </ul>

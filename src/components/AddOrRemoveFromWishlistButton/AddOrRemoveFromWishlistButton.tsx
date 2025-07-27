@@ -1,4 +1,4 @@
-import { useWishlist } from '../store/wishlistContext';
+import { useWishlist } from '../../store/Wishlist/wishlistContext';
 
 interface AddRemoveFromWishlistProps {
   movieId: number;

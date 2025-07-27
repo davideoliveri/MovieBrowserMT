@@ -1,6 +1,6 @@
 @use 'sass:map';
 @use 'sass:string';
-@use '../styles/abstract/variables.scss' as vars;
+@use '../../styles/abstract/variables.scss' as vars;
 
 .add-to-wishlist-button {
   display: block;

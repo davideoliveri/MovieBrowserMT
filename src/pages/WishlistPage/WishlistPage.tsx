@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Layout } from '../../components/Layout';
-import { MovieCard } from '../../components/MovieCard';
+import { Layout } from '../../components/Layout/Layout';
+import { MovieCard } from '../../components/MovieCard/MovieCard';
 
 import {
   SortKey,

@@ -1,5 +1,5 @@
 // A helper for tests that need a mock WishlistProvider
-import { WishlistContext } from '../store/wishlistContext';
+import { WishlistContext } from '../store/Wishlist/wishlistContext';
 import { WishlistEntry } from '../interfaces/WishlistEntryInterface';
 
 export const MockWishlistProvider = ({
