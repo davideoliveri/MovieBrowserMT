@@ -13,7 +13,6 @@ vi.mock(
 
 describe('MovieCard', () => {
   test('should render movie details and link correctly', () => {
-    // Arrange
     const mockMovie: MovieDetailsData = {
       id: 123,
       title: 'Awesome Movie Title',
@@ -22,18 +21,16 @@ describe('MovieCard', () => {
       poster_path: '/test-poster.jpg',
     };
 
-    // Act
     render(
       <MemoryRouter>
         <MovieCard {...mockMovie} />
       </MemoryRouter>
     );
 
-    // Assert
     // Check that the text content is displayed
     expect(screen.getByText('Awesome Movie Title')).toBeInTheDocument();
-    expect(screen.getByText('Release date: 2025-07-27')).toBeInTheDocument();
-    expect(screen.getByText('Score: 8.5')).toBeInTheDocument();
+    expect(screen.getByText('📅 2025-07-27')).toBeInTheDocument();
+    expect(screen.getByText('🎖️ 8.5')).toBeInTheDocument();
 
     // Check the image attributes
     const posterImage = screen.getByRole('img', { name: /poster for/i });
@@ -49,5 +46,27 @@ describe('MovieCard', () => {
     // Check that the link points to the correct details page
     const link = screen.getByRole('link');
     expect(link).toHaveAttribute('href', '/moviedetails/123');
+  });
+
+  test('Should render a placeholder when no valid poster_path is given', () => {
+    const mockMovie: MovieDetailsData = {
+      id: 123,
+      title: 'Awesome Movie Title',
+      release_date: '2025-07-27',
+      vote_average: 8.5,
+      poster_path: null,
+    };
+
+    render(
+      <MemoryRouter>
+        <MovieCard {...mockMovie} />
+      </MemoryRouter>
+    );
+
+    // Check the image attributes
+    const posterImage = screen.getByRole('img', { name: /poster for/i });
+    expect(posterImage.getAttribute('src')).not.toContain(
+      'https://image.tmdb.org/t/p/'
+    );
   });
 });

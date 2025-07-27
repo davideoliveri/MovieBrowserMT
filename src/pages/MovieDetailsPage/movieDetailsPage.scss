@@ -1,8 +1,12 @@
 @use '../../styles/abstract/variables.scss' as vars;
+@use '../../styles/abstract/mixins' as mixins;
 
 .movie-details {
+  padding: vars.$space-4;
+  width: 100%;
+
   &__error {
-    color: red;
+    color: vars.$color-error;
   }
 
   &__title {
@@ -11,15 +15,31 @@
 
   &__info {
     display: flex;
-    flex-direction: row;
-    gap: 1.5rem;
-    margin-bottom: 2rem;
+    flex-direction: column;
+    gap: vars.$grid-gap-1_5;
+    margin-bottom: vars.$space-6;
+    @include mixins.mq(md, min) {
+      flex-direction: row;
+    }
+    @include mixins.mq(lg, min) {
+      max-width: vars.$max-content-width-lg;
+      margin: auto;
+    }
   }
 
   &__poster {
-    width: 320px;
-    border-radius: 0.25rem;
+    width: 100%;
+    border-radius: vars.$border-radius-tiny;
     box-shadow: 0 2px 6px rgba(#000, 0.2);
+    @include mixins.mq(sm, min) {
+      width: vars.$poster-size-sm;
+    }
+    @include mixins.mq(md, min) {
+      width: vars.$poster-size-md;
+    }
+    @include mixins.mq(lg, min) {
+      width: vars.$poster-size-lg;
+    }
   }
 
   &__essential,
@@ -30,47 +50,31 @@
   &__genres {
     width: 100%;
     display: flex;
-    gap: 1rem;
+    gap: vars.$grid-gap-1;
     flex-wrap: wrap;
     justify-content: flex-start;
   }
 
   &__genre-badge {
-    background-color: vars.$color-secondary;
+    background-color: vars.$color-genre-badge;
     color: vars.$color-dark;
     padding: vars.$space-2;
-    border-radius: 1rem;
+    border-radius: vars.$border-radius-normal;
   }
 
   &__cast {
-    margin-top: 2rem;
+    margin-top: vars.$space-6;
+    @include mixins.mq(lg, min) {
+      max-width: vars.$max-content-width-lg;
+      margin: vars.$space-6 auto;
+    }
 
     &-list {
       list-style: none;
       padding: 0;
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-      gap: 1rem;
-    }
-
-    &-member {
-      text-align: center;
-
-      &-photo {
-        width: 100%;
-        border-radius: 0.25rem;
-        margin-bottom: 0.5rem;
-      }
-
-      &-name {
-        font-weight: bold;
-        margin: 0;
-      }
-
-      &-character {
-        margin: 0;
-        font-size: 0.875rem;
-      }
+      gap: vars.$grid-gap-1;
     }
   }
 }

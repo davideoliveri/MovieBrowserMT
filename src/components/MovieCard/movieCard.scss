@@ -1,14 +1,42 @@
-.movie-card {
-  min-width: 200px;
-  min-height: 200px;
-  background-color: antiquewhite;
-  gap: 2em;
+@use '../../styles/abstract/variables' as vars;
 
-  &__poster {
-    width: 100%;
-  }
+.movie-card {
+  // 1. Establish a Flexbox column layout
+  display: flex;
+  flex-direction: column;
+  background-color: vars.$color-movie-card-background;
+  box-shadow: 1px 7px 10px -5px #{vars.$color-dark};
+  min-width: vars.$min-card-width;
+  min-height: 100%;
+  overflow: hidden;
+  border-radius: vars.$border-radius-tiny;
 
   &__link {
     display: block;
+    aspect-ratio: 2 / 3;
+    background-color: vars.$color-dark;
+  }
+
+  &__poster {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    padding: vars.$space-3;
+    gap: vars.$space-1;
+    flex-grow: 1;
+  }
+  &__title {
+    flex-grow: 1;
+  }
+
+  &__meta {
+    display: flex;
+    flex-direction: column;
+    gap: vars.$space-1;
   }
 }

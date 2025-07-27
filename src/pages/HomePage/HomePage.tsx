@@ -29,8 +29,8 @@ export const HomePage: React.FC = () => {
 
   return (
     <Layout>
-      <main className="homepage container">
-        <h1 className="h1 text-center">Welcome back!</h1>
+      <main className="homepage">
+        <h1 className="h1 homepage__title">Welcome back!</h1>
         {carousels.map(({ title, movies }) => (
           <Carousel key={title} genreName={title} movies={movies} />
         ))}

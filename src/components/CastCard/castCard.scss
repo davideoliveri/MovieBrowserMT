@@ -1,0 +1,19 @@
+.cast-card {
+  text-align: center;
+
+  &__photo {
+    width: 100%;
+    border-radius: 0.25rem;
+    margin-bottom: 0.5rem;
+  }
+
+  &__name {
+    font-weight: bold;
+    margin: 0;
+  }
+
+  &__character {
+    margin: 0;
+    font-size: 0.875rem;
+  }
+}

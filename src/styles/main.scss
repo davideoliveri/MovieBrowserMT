@@ -1,26 +1,27 @@
-@use '../styles/abstract/variables';
-
 @use './base/reset';
+
+@use '../styles/abstract/variables';
+@use '../styles/abstract/theming';
+@use '../styles/abstract/mixins';
+
 @use './base/fonts';
 @use './base/typography';
-@use './base/utilities';
-
-@use './layout/container';
 
 @use '../components/common/Header/header';
 @use '../components/common/Footer/footer';
 @use '../components/Carousel/carousel';
 @use '../components/MovieCard/movieCard';
+@use '../components/CastCard/castCard';
 @use '../components/AddOrRemoveFromWishlistButton/addOrRemoveFromWishlistButton';
 
+@use '../pages/HomePage/homePage';
 @use '../pages/MovieDetailsPage/movieDetailsPage';
 @use '../pages/WishlistPage/wishlistPage';
 
-$app-bg: #f9f9f9;
+$app-bg: #dff8ff;
 
 body {
   background: $app-bg;
-  font-size: 16px;
 }
 
 .app {

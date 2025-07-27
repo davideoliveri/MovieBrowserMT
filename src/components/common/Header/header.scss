@@ -1,8 +1,11 @@
 @use '../../../styles/abstract/variables' as vars;
-@use '../../../styles/abstract/mixins.scss';
+@use '../../../styles/abstract/mixins.scss' as mixins;
 
 .header {
-  background-color: aquamarine;
+  background-color: vars.$color-header-background;
+  position: relative;
+  box-shadow: 0px 4px 10px vars.$color-header-shadow;
+
   &__menu {
     display: flex;
     flex-direction: row;
@@ -12,6 +15,22 @@
 
     @include mixins.mq(md, min) {
       padding: vars.$space-4;
+    }
+    @include mixins.mq(lg, min) {
+      max-width: vars.$max-content-width-lg;
+      margin: auto;
+    }
+  }
+
+  &__item {
+    text-decoration: none;
+    font-weight: bold;
+    color: vars.$color-link;
+    padding: vars.$space-2;
+
+    &:hover {
+      text-decoration: underline;
+      color: vars.$color-link-hover;
     }
   }
 }

@@ -1,0 +1,13 @@
+@use '../../styles/abstract/variables.scss' as vars;
+@use '../../styles/abstract/mixins' as mixins;
+
+.homepage {
+  padding: vars.$space-4;
+  @include mixins.mq(lg, min) {
+    max-width: vars.$max-content-width-lg;
+    margin: auto;
+  }
+  &__title {
+    text-align: center;
+  }
+}

@@ -57,7 +57,7 @@ export const WishlistPage: React.FC = () => {
         {!loading && !error && movies.length === 0 && (
           <p className="wishlist-page__status">No movies in your wishlist.</p>
         )}
-        <section>
+        <section className="wishlist-page__content">
           <ul className="wishlist-page__grid">
             {movies.map((movie) => (
               <MovieCard

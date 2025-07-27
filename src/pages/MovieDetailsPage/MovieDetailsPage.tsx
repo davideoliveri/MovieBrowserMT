@@ -28,9 +28,7 @@ export const MovieDetailsPage: React.FC = () => {
 
   return (
     <Layout>
-      <main
-        className={`container movie-details movie-details--${genreClassModifier}`}
-      >
+      <main className={`movie-details movie-details--${genreClassModifier}`}>
         {movie && (
           <>
             <div className="movie-details__info">
@@ -67,7 +65,7 @@ export const MovieDetailsPage: React.FC = () => {
                 <h2 className="h2">Cast</h2>
                 <ul className="movie-details__cast-list">
                   {movie.credits.cast.map((c) => (
-                    <li key={c.cast_id} className="movie-details__cast-member">
+                    <li key={c.cast_id}>
                       <CastCard cast={c} />
                     </li>
                   ))}

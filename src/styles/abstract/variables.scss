@@ -1,7 +1,57 @@
+@use 'sass:color';
+
 $color-primary: #31ebf5;
 $color-secondary: #ff4081;
+$color-white: #eee;
 $color-dark: #111;
-$color-light: #f5f5f5;
+$color-neon: #00e5ff;
+$color-error: #f00;
+
+$color-header-background: color.adjust($color-primary, $lightness: 50%);
+$color-header-shadow: color.adjust($color-primary, $blackness: 70%);
+$color-genre-badge: $color-secondary;
+$color-link: color.change($color-primary, $blackness: 60%);
+$color-link-hover: color.change($color-primary, $blackness: 40%);
+$color-movie-card-background: $color-white;
+
+$border-radius-tiny: 4px;
+$border-radius-normal: 18px;
+$border-radius-max: 900px;
+
+$space-0: 0;
+$space-1: 4px;
+$space-2: 8px;
+$space-3: 16px;
+$space-4: 24px;
+$space-5: 32px;
+$space-6: 40px;
+
+$max-content-width-lg: 960px;
+
+$grid-gap-1: 1rem;
+$grid-gap-1_5: 1.5rem;
+$grid-gap-2: 2rem;
+
+$min-card-width: 200px;
+$min-card-hight: 200px;
+
+$poster-size-sm: 100%;
+$poster-size-md: 380px;
+$poster-size-lg: 480px;
+
+$breakpoints: (
+  'xs': 0,
+  // default / mobile‑first
+  'sm': 480px,
+  // small phones
+  'md': 768px,
+  // tablets
+  'lg': 1024px,
+  // small laptops
+  'xl': 1280px,
+  // desktops
+  'xxl': 1440px, // large desktops
+);
 
 $genreToColors: (
   'sciencefiction': (
@@ -22,25 +72,4 @@ $genreToColors: (
     'background':
       'linear-gradient(49deg,rgba(42, 123, 155, 1) 0%, rgba(87, 199, 133, 1) 50%, rgba(237, 221, 83, 1) 100%);',
   ),
-);
-
-$space-0: 0;
-$space-1: 4px;
-$space-2: 8px;
-$space-3: 16px;
-$space-4: 24px;
-$space-5: 32px;
-
-$breakpoints: (
-  'xs': 0,
-  // default / mobile‑first
-  'sm': 480px,
-  // small phones
-  'md': 768px,
-  // tablets
-  'lg': 1024px,
-  // small laptops
-  'xl': 1280px,
-  // desktops
-  'xxl': 1440px, // large desktops
 );
