@@ -1,0 +1,18 @@
+@use 'sass:map';
+@use 'sass:string';
+
+@use './variables.scss' as vars;
+@use '../base/fonts' as fonts;
+
+@each $className, $genreSpecs in fonts.$fontFaceToGenreMap {
+  $colorMap: map.get(vars.$genreToColors, $className);
+
+  .movie-details--#{$className} {
+    font-family: #{map.get($genreSpecs, 'fontFamily')};
+    font-size: #{map.get($genreSpecs, 'fontSize')};
+
+    color: string.unquote(map.get(($colorMap), 'color'));
+    background-color: string.unquote(map.get($colorMap, 'background-color'));
+    background: string.unquote(map.get($colorMap, 'background'));
+  }
+}

@@ -4,7 +4,6 @@ import { CastMember } from '../../interfaces/CastMemberInterface';
 
 describe('CastCard', () => {
   test('should render all details when all data is provided', () => {
-    // Arrange
     const mockCastMember: CastMember = {
       id: 1,
       name: 'Zendaya',
@@ -13,10 +12,8 @@ describe('CastCard', () => {
       character: 'Chani',
     };
 
-    // Act
     render(<CastCard cast={mockCastMember} />);
 
-    // Assert
     // Check for the image
     const image = screen.getByRole('img', { name: 'Zendaya' });
     expect(image).toBeInTheDocument();
@@ -30,12 +27,12 @@ describe('CastCard', () => {
     expect(screen.getByText('as Chani')).toBeInTheDocument();
   });
 
-  test('should not render an image if profile_path is null', () => {
+  test('should render a placeholder when profile_path is null', () => {
     // Arrange
     const mockCastMember: CastMember = {
       id: 1,
       name: 'Zendaya',
-      profile_path: null, // No image
+      profile_path: null,
       cast_id: 10,
       character: 'Chani',
     };
@@ -44,9 +41,13 @@ describe('CastCard', () => {
     render(<CastCard cast={mockCastMember} />);
 
     // Assert
-    // Use queryByRole because it returns null instead of throwing an error
-    const image = screen.queryByRole('img');
-    expect(image).not.toBeInTheDocument();
+    const image = screen.getByRole('img', { name: 'Zendaya' });
+    expect(image).toBeInTheDocument();
+
+    // Check that the src is NOT a TMDB URL
+    expect(image.getAttribute('src')).not.toContain(
+      'https://image.tmdb.org/t/p/'
+    );
   });
 
   test('should not render character name if it is not provided', () => {
@@ -59,13 +60,11 @@ describe('CastCard', () => {
       character: '', // No character name
     };
 
-    // Act
     render(<CastCard cast={mockCastMember} />);
 
-    // Assert
     // Check that the name is present but the character line is not
     expect(screen.getByText('Zendaya')).toBeInTheDocument();
-    const characterText = screen.queryByText(/as /); // Look for text starting with "as "
+    const characterText = screen.queryByText(/as /);
     expect(characterText).not.toBeInTheDocument();
   });
 });

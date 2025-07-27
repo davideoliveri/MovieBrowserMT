@@ -13,14 +13,16 @@ export const Carousel: React.FC<CarouselProps> = ({ genreName, movies }) => {
       <div className="carousel">
         <ul className="carousel__list">
           {movies.map((m) => (
-            <MovieCard
-              key={m.id}
-              id={m.id}
-              title={m.title}
-              release_date={m.release_date}
-              vote_average={Number(m.vote_average.toFixed(1))}
-              poster_path={m.poster_path}
-            />
+            <li>
+              <MovieCard
+                key={m.id}
+                id={m.id}
+                title={m.title}
+                release_date={m.release_date}
+                vote_average={Number(m.vote_average.toFixed(1))}
+                poster_path={m.poster_path}
+              />
+            </li>
           ))}
         </ul>
       </div>

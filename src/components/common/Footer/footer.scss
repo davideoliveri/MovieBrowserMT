@@ -1,3 +1,15 @@
+@use '../../../styles/abstract/variables' as vars;
+@use '../../../styles/abstract/mixins' as mixins;
+
 .footer {
   min-height: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  @include mixins.mq(lg, min) {
+    max-width: vars.$max-content-width-lg;
+    margin: auto;
+  }
 }
