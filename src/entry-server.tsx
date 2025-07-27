@@ -6,7 +6,7 @@ import {
 } from 'react-router-dom/server';
 import type { Request as ExpressRequest } from 'express';
 import { routes } from './router';
-import { WishlistProvider } from './store/WishlistProvider';
+import { WishlistProvider } from './store/Wishlist/WishlistProvider';
 
 function createFetchRequest(req: ExpressRequest): Request {
   const origin = `${req.protocol}://${req.get('host')}`;

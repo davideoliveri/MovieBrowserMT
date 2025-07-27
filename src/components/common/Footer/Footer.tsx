@@ -7,5 +7,5 @@ export const Footer: React.FC = () => {
     setThisYear(new Date().getFullYear());
   }, []);
 
-  return <footer>Copyright © {thisYear}</footer>;
+  return <footer className="footer">Copyright © {thisYear}</footer>;
 };

@@ -13,9 +13,12 @@ vi.mock('react-router-dom', async (importOriginal) => {
 });
 
 // Mock the AddRemoveFromWishlistButton to avoid testing its implementation here
-vi.mock('../components/AddOrRemoveFromWishlistButton', () => ({
-  AddRemoveFromWishlist: () => <button>Wishlist Button</button>,
-}));
+vi.mock(
+  '../components/AddOrRemoveFromWishlistButton/AddOrRemoveFromWishlistButton',
+  () => ({
+    AddRemoveFromWishlist: () => <button>Wishlist Button</button>,
+  })
+);
 
 describe('MovieDetailsPage component', () => {
   test('should render movie details correctly', () => {

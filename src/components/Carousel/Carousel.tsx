@@ -1,5 +1,6 @@
-import { MovieCard } from './MovieCard';
-import { Movie } from '../interfaces/MovieInterface';
+import { MovieCard } from '../MovieCard/MovieCard';
+import { Movie } from '../../interfaces/MovieInterface';
+
 interface CarouselProps {
   genreName: string;
   movies: Movie[];

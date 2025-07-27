@@ -1,8 +1,11 @@
 import React, { useReducer, useEffect, useRef } from 'react';
-import { WishlistEntry } from '../interfaces/WishlistEntryInterface';
+import { WishlistEntry } from '../../interfaces/WishlistEntryInterface';
 import { WishlistContext, Action } from './wishlistContext';
 
-const reducer = (state: WishlistEntry[], action: Action): WishlistEntry[] => {
+export const reducer = (
+  state: WishlistEntry[],
+  action: Action
+): WishlistEntry[] => {
   switch (action.type) {
     case 'ADD':
       return [action.entry, ...state];

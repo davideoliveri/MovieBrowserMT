@@ -7,10 +7,11 @@
 
 @use './layout/container';
 
-@use '../components/common/header';
-@use '../components/carousel';
-@use '../components/movieCard';
-@use '../components/addOrRemoveFromWishlistButton';
+@use '../components/common/Header/header';
+@use '../components/common/Footer/footer';
+@use '../components/Carousel/carousel';
+@use '../components/MovieCard/movieCard';
+@use '../components/AddOrRemoveFromWishlistButton/addOrRemoveFromWishlistButton';
 
 @use '../pages/MovieDetailsPage/movieDetailsPage';
 @use '../pages/WishlistPage/wishlistPage';

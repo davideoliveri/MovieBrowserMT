@@ -1,6 +1,6 @@
 import { useLoaderData } from 'react-router-dom';
-import { Layout } from '../../components/Layout';
-import { Carousel } from '../../components/Carousel';
+import { Layout } from '../../components/Layout/Layout';
+import { Carousel } from '../../components/Carousel/Carousel';
 import { API } from '../../api/API';
 
 const carouselConfig = [

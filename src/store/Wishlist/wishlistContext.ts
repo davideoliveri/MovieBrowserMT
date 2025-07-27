@@ -1,5 +1,5 @@
 import { createContext, useContext } from 'react';
-import { WishlistEntry } from '../interfaces/WishlistEntryInterface';
+import { WishlistEntry } from '../../interfaces/WishlistEntryInterface';
 
 type State = WishlistEntry[];
 export type Action =

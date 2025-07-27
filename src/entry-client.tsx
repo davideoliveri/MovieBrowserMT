@@ -1,7 +1,7 @@
 import { hydrateRoot } from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { routes } from './router';
-import { WishlistProvider } from './store/WishlistProvider';
+import { WishlistProvider } from './store/Wishlist/WishlistProvider';
 import './styles/main.scss';
 
 const router = createBrowserRouter(routes);
