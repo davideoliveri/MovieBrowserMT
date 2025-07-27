@@ -1,0 +1,19 @@
+@use '../../styles/abstract/variables' as vars;
+
+.error-page {
+  text-align: center;
+  padding: vars.$space-6;
+
+  &__error-status {
+    font-weight: bold;
+  }
+
+  &__message-sorry,
+  &__message-content {
+    margin-top: vars.$space-3;
+  }
+  &__link-home {
+    display: inline-block;
+    margin-top: vars.$space-5;
+  }
+}
