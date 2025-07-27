@@ -5,6 +5,14 @@
 .wishlist-page {
   padding: vars.$space-4;
 
+  &__status,
+  &__error {
+    text-align: center;
+    @include mixins.mq(lg, min) {
+      max-width: vars.$max-content-width-lg;
+      margin: vars.$space-3 auto;
+    }
+  }
   &__title {
     text-align: center;
   }
