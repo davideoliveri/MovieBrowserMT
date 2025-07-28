@@ -1,11 +1,11 @@
 import { useLoaderData } from 'react-router-dom';
-import { Layout } from '../../components/Layout/Layout';
-import { AddRemoveFromWishlist } from '../../components/AddOrRemoveFromWishlistButton/AddOrRemoveFromWishlistButton';
-import { genreClasses } from '../../enums/genresClasses';
-import { API } from '../../api/API';
-import { MovieDetailsData } from '../../interfaces/MovieDetailsDataInterface';
+import { Layout } from '@/components/Layout/Layout';
+import { AddRemoveFromWishlist } from '@/components/AddOrRemoveFromWishlistButton/AddOrRemoveFromWishlistButton';
+import { genreClasses } from '@/enums/genresClasses';
+import { API } from '@/api/API';
+import { MovieDetailsData } from '@/interfaces/MovieDetailsDataInterface';
 import { LoaderFunctionArgs } from 'react-router-dom';
-import { CastCard } from '../../components/CastCard/CastCard';
+import { CastCard } from '@/components/CastCard/CastCard';
 
 export async function loader({
   params,

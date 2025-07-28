@@ -2,13 +2,10 @@
 
 import { renderHook, waitFor } from '@testing-library/react';
 
-import { MockWishlistProvider } from '../../mocks/MockWishlistProvider';
+import { MockWishlistProvider } from '@/mocks/MockWishlistProvider';
 import { useWishlistMovies } from './useWishlistMovies';
-import { WishlistEntry } from '../../interfaces/WishlistEntryInterface';
-import {
-  SortKey,
-  Order,
-} from '../../interfaces/WishlistMoviesOptionsInterface';
+import { WishlistEntry } from '@/interfaces/WishlistEntryInterface';
+import { SortKey, Order } from '@/interfaces/WishlistMoviesOptionsInterface';
 
 describe('useWishlistMovies', () => {
   // Define mock wishlist entries that the context will provide

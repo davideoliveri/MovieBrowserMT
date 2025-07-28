@@ -1,5 +1,5 @@
 import React, { useReducer, useEffect, useRef } from 'react';
-import { WishlistEntry } from '../../interfaces/WishlistEntryInterface';
+import { WishlistEntry } from '@/interfaces/WishlistEntryInterface';
 import { WishlistContext, Action } from './wishlistContext';
 
 export const reducer = (

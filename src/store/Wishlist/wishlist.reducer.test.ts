@@ -1,5 +1,5 @@
 import { reducer } from './WishlistProvider';
-import { WishlistEntry } from '../../interfaces/WishlistEntryInterface';
+import { WishlistEntry } from '@/interfaces/WishlistEntryInterface';
 
 describe('wishlist reducer', () => {
   const initialState: WishlistEntry[] = [

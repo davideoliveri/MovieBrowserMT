@@ -2,10 +2,10 @@ import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { MemoryRouter } from 'react-router-dom';
 import { WishlistPage } from './WishlistPage';
-import { API } from '../../api/API';
+import { API } from '@/api/API';
 
 // Mock the entire API module
-vi.mock('../../api/API');
+vi.mock('@/api/API');
 
 describe('WishlistPage', () => {
   // Setup a reusable mock function for the API call

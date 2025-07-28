@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import { MovieCard } from './MovieCard';
-import { MovieDetailsData } from '../../interfaces/MovieDetailsDataInterface';
+import { MovieDetailsData } from '@/interfaces/MovieDetailsDataInterface';
 
 // Mock the child button component
 vi.mock(

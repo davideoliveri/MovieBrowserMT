@@ -1,4 +1,4 @@
-import { MovieDetailsData } from '../../interfaces/MovieDetailsDataInterface';
+import { MovieDetailsData } from '@/interfaces/MovieDetailsDataInterface';
 
 export async function getMovieById(id: string): Promise<MovieDetailsData> {
   const apiKey = import.meta.env.VITE_TMDB_API_KEY;
