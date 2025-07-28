@@ -83,7 +83,7 @@ describe('useWishlistMovies', () => {
     // Wait for the fetch to fail
     await waitFor(() => {
       expect(result.current.loading).toBe(false);
-      expect(result.current.error).toBe('Not Found'); // Assuming msw returns this statusText
+      expect(result.current.error).toBe('Failed to fetch: 404 Not Found');
       expect(result.current.movies).toHaveLength(0);
     });
   });

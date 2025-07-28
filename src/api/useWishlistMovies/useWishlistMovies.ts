@@ -3,6 +3,8 @@ import { WishlistMovie } from '@/interfaces/WishlistMovieInterface';
 import { WishlistEntry } from '@/interfaces/WishlistEntryInterface';
 import { useWishlist } from '@/store/Wishlist/wishlistContext';
 import { UseWishlistMoviesOptions } from '@/interfaces/WishlistMoviesOptionsInterface';
+import { getMovieById } from '../getMovieById/getMovieById';
+import { MovieDetailsData } from '@/interfaces/MovieDetailsDataInterface';
 
 interface UseWishlistMoviesResult {
   movies: WishlistMovie[];
@@ -15,11 +17,17 @@ interface UseWishlistMoviesResult {
 export function useWishlistMovies(
   opts: UseWishlistMoviesOptions = {}
 ): UseWishlistMoviesResult {
+  // const { state: entries } = useWishlist();
+  // const { page = 1, perPage = 20, sortBy = 'dateAdded', order = 'desc' } = opts;
+
+  // const [cache, setCache] = useState<Record<string, WishlistMovie>>({});
+
+  // const [loading, setLoading] = useState(false);
+  // const [error, setError] = useState<string | null>(null);
+
   const { state: entries } = useWishlist();
   const { page = 1, perPage = 20, sortBy = 'dateAdded', order = 'desc' } = opts;
-
-  const [cache, setCache] = useState<Record<string, WishlistMovie>>({});
-
+  const [cache, setCache] = useState<Record<string, MovieDetailsData>>({});
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -36,14 +44,8 @@ export function useWishlistMovies(
       setLoading(true);
 
       try {
-        const promises = missing.map(async (id) => {
-          const res = await fetch(
-            `https://api.themoviedb.org/3/movie/${id}?api_key=${import.meta.env.VITE_TMDB_API_KEY}`
-          );
-          if (!res.ok) throw new Error(res.statusText);
-          return res.json() as Promise<WishlistMovie>;
-        });
-
+        // The fetching logic is now much cleaner
+        const promises = missing.map((id) => getMovieById(id));
         const fetched = await Promise.all(promises);
 
         if (cancelled) return;

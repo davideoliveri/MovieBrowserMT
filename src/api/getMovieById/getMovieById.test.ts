@@ -7,6 +7,6 @@ test('should return movie data for a valid ID', async () => {
 
 test('should throw an error for an invalid ID', async () => {
   await expect(getMovieById('invalid_id')).rejects.toThrow(
-    'Failed to fetch movie'
+    'Failed to fetch: 404 Not Found'
   );
 });
