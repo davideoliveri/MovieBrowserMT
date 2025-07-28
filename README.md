@@ -91,6 +91,27 @@ The application will be available at **http://localhost:3000**.
 
 ---
 
+## What to do next?
+
+If you want to build for production and test how it would perform with a live nodejs server you can run the following command:
+
+```
+npm run build:server && npm run serve
+```
+
+Another cool feature of this project is the possibility check test coverage and reports using Vite UI.
+To do that you would simply run
+
+```
+npm run test:ui
+```
+
+This will launch a tiny server that serves the dashboarsd from which you can see which tests are passing, which are not, dependenices of each test and the coverage for the whole project.
+
+Find below a summary of the scripts you can run.
+
+---
+
 ## **📜 Available Scripts**
 
 This project comes with a set of useful scripts defined in `package.json`:
