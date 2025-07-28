@@ -87,9 +87,8 @@ function makeSsrHandler(vite) {
 /* -------------------------------------------------------------------------- */
 /*                     CREATE DEV OR PROD SERVER                              */
 /* -------------------------------------------------------------------------- */
+const app = express();
 async function createServer() {
-  const app = express();
-
   /* ------------------------------- DEV ------------------------------------ */
   if (!isProd) {
     const httpServer = http.createServer(app);
@@ -126,3 +125,5 @@ async function createServer() {
 }
 
 createServer();
+
+export default app;
