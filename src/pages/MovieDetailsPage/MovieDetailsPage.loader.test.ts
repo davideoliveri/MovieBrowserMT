@@ -1,10 +1,10 @@
 import { loader } from './MovieDetailsPage';
-import { API } from '../../api/API';
+import { API } from '@/api/API';
 import { LoaderFunctionArgs } from 'react-router-dom';
-import { MovieDetailsData } from '../../interfaces/MovieDetailsDataInterface';
+import { MovieDetailsData } from '@/interfaces/MovieDetailsDataInterface';
 
 // Mock the API module
-vi.mock('../../api/API');
+vi.mock('@/api/API');
 
 describe('MovieDetailsPage loader', () => {
   test('should fetch and return movie data for a valid ID', async () => {

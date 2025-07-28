@@ -1,5 +1,5 @@
 import { MovieCard } from '../MovieCard/MovieCard';
-import { Movie } from '../../interfaces/MovieInterface';
+import { Movie } from '@/interfaces/MovieInterface';
 
 interface CarouselProps {
   genreName: string;
@@ -13,9 +13,8 @@ export const Carousel: React.FC<CarouselProps> = ({ genreName, movies }) => {
       <div className="carousel">
         <ul className="carousel__list">
           {movies.map((m) => (
-            <li>
+            <li key={m.id}>
               <MovieCard
-                key={m.id}
                 id={m.id}
                 title={m.title}
                 release_date={m.release_date}

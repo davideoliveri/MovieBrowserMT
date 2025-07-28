@@ -1,8 +1,8 @@
 import { loader } from './HomePage';
-import { API } from '../../api/API';
-import { Movie } from '../../interfaces/MovieInterface';
+import { API } from '@/api/API';
+import { Movie } from '@/interfaces/MovieInterface';
 // Mock the API module
-vi.mock('../../api/API');
+vi.mock('@/api/API');
 
 describe('HomePage loader', () => {
   test('should fetch movies for each genre and return structured data', async () => {

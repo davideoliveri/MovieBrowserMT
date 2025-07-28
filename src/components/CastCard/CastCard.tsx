@@ -1,6 +1,6 @@
 import React from 'react';
-import { CastMember } from '../../interfaces/CastMemberInterface';
-import PersonPlaceholder from '../../assets/images/placeholder-cast.svg';
+import { CastMember } from '@/interfaces/CastMemberInterface';
+import PersonPlaceholder from '@/assets/images/placeholder-cast.svg';
 
 interface CastCardProps {
   cast: CastMember;

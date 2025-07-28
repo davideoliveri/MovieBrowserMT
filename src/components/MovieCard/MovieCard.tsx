@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
-import { MovieDetailsData } from '../../interfaces/MovieDetailsDataInterface';
+import { MovieDetailsData } from '@/interfaces/MovieDetailsDataInterface';
 import { AddRemoveFromWishlist } from '../AddOrRemoveFromWishlistButton/AddOrRemoveFromWishlistButton';
-import MoviePlaceholder from '../../assets/images/placeholder-movie.svg';
+import MoviePlaceholder from '@/assets/images/placeholder-movie.svg';
 
 const basePosterURL: string = 'https://image.tmdb.org/t/p/';
 const maxThumbnailsize = 300;

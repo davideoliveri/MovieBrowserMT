@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import { MovieDetailsPage } from './MovieDetailsPage';
-import { MovieDetailsData } from '../../interfaces/MovieDetailsDataInterface';
+import { MovieDetailsData } from '@/interfaces/MovieDetailsDataInterface';
 import { useLoaderData, MemoryRouter } from 'react-router-dom';
 
 // Mock the react-router-dom module

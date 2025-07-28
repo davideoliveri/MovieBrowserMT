@@ -1,8 +1,8 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { AddRemoveFromWishlist } from './AddOrRemoveFromWishlistButton';
-import { WishlistContext } from '../../store/Wishlist/wishlistContext';
-import { WishlistEntry } from '../../interfaces/WishlistEntryInterface';
+import { WishlistContext } from '@/store/Wishlist/wishlistContext';
+import { WishlistEntry } from '@/interfaces/WishlistEntryInterface';
 
 // Create a reusable wrapper component to provide the mock context
 const MockWishlistProvider = ({

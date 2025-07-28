@@ -1,4 +1,4 @@
-import { Movie } from '../../interfaces/MovieInterface';
+import { Movie } from '@/interfaces/MovieInterface';
 
 export async function getMoviesByGenre(genreId: number): Promise<Movie[]> {
   const apiKey = import.meta.env.VITE_TMDB_API_KEY;

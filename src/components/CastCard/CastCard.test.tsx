@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import { CastCard } from './CastCard';
-import { CastMember } from '../../interfaces/CastMemberInterface';
+import { CastMember } from '@/interfaces/CastMemberInterface';
 
 describe('CastCard', () => {
   test('should render all details when all data is provided', () => {

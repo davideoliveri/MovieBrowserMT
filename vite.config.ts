@@ -1,5 +1,6 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
+import tsconfigPaths from 'vite-tsconfig-paths';
 
 export default defineConfig(() => {
   const isSsrClientBuild = process.env.VITE_BUILD_MODE === 'ssr_client';
@@ -10,7 +11,7 @@ export default defineConfig(() => {
   };
 
   return {
-    plugins: [react()],
+    plugins: [react(), tsconfigPaths()],
     css: {
       preprocessorOptions: {
         scss: {},
