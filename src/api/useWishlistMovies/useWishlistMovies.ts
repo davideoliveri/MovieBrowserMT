@@ -25,40 +25,44 @@ export function useWishlistMovies(
 
   useEffect(() => {
     let cancelled = false;
-    const missing = entries
-      .map((e) => e.id.toString())
-      .filter((id) => !(id in cache));
 
-    if (missing.length === 0) return;
+    const fetchMissingMovies = async () => {
+      const missing = entries
+        .map((e) => e.id.toString())
+        .filter((id) => !(id in cache));
 
-    setLoading(true);
-    Promise.all(
-      missing.map((id) =>
-        fetch(
-          `https://api.themoviedb.org/3/movie/${id}?api_key=${import.meta.env.VITE_TMDB_API_KEY}`
-        ).then((res) => {
+      if (missing.length === 0) return;
+
+      setLoading(true);
+
+      try {
+        const promises = missing.map(async (id) => {
+          const res = await fetch(
+            `https://api.themoviedb.org/3/movie/${id}?api_key=${import.meta.env.VITE_TMDB_API_KEY}`
+          );
           if (!res.ok) throw new Error(res.statusText);
           return res.json() as Promise<WishlistMovie>;
-        })
-      )
-    )
-      .then((fetched) => {
+        });
+
+        const fetched = await Promise.all(promises);
+
         if (cancelled) return;
+
         const updated = { ...cache };
         fetched.forEach((m) => {
           updated[m.id] = m;
         });
         setCache(updated);
-      })
-      .catch((err: unknown) => {
-        if (!cancelled) {
-          const message = err instanceof Error ? err.message : String(err);
-          setError(message);
-        }
-      })
-      .finally(() => {
+      } catch (err: unknown) {
+        if (cancelled) return;
+        const message = err instanceof Error ? err.message : String(err);
+        setError(message);
+      } finally {
         if (!cancelled) setLoading(false);
-      });
+      }
+    };
+
+    fetchMissingMovies();
 
     return () => {
       cancelled = true;
