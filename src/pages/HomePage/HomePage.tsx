@@ -2,6 +2,7 @@ import { useLoaderData } from 'react-router-dom';
 import { Layout } from '@/components/Layout/Layout';
 import { Carousel } from '@/components/Carousel/Carousel';
 import { API } from '@/api/API';
+import { PageTitle } from '@/components/common/PageTitle/PageTitle';
 
 const carouselConfig = [
   { title: 'Science Fiction', genreId: 878 },
@@ -29,6 +30,7 @@ export const HomePage: React.FC = () => {
 
   return (
     <Layout>
+      <PageTitle>Welcome Page</PageTitle>
       <main className="homepage">
         <h1 className="h1 homepage__title">Welcome back!</h1>
         {carousels.map(({ title, movies }) => (

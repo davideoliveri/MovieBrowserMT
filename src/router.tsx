@@ -12,6 +12,7 @@ export const routes: RouteObject[] = [
     path: '/',
     element: <HomePage />,
     loader: homeLoader,
+    errorElement: <ErrorPage />,
   },
   {
     path: 'moviedetails/:id',
@@ -22,5 +23,6 @@ export const routes: RouteObject[] = [
   {
     path: 'wishlist',
     element: <WishlistPage />,
+    errorElement: <ErrorPage />,
   },
 ];

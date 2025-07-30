@@ -4,6 +4,7 @@ import { MovieCard } from '@/components/MovieCard/MovieCard';
 
 import { SortKey, Order } from '@/interfaces/WishlistMoviesOptionsInterface';
 import { API } from '@/api/API';
+import { PageTitle } from '@/components/common/PageTitle/PageTitle';
 
 export const WishlistPage: React.FC = () => {
   const [page, setPage] = useState(1);
@@ -25,6 +26,7 @@ export const WishlistPage: React.FC = () => {
 
   return (
     <Layout>
+      <PageTitle>{`Your Wishlist (${total} movies)`}</PageTitle>
       <main className="wishlist-page">
         <h1 className="h1 wishlist-page__title">Your Wishlist</h1>
 

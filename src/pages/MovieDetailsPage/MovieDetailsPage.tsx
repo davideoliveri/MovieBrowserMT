@@ -6,6 +6,7 @@ import { API } from '@/api/API';
 import { MovieDetailsData } from '@/interfaces/MovieDetailsDataInterface';
 import { LoaderFunctionArgs } from 'react-router-dom';
 import { CastCard } from '@/components/CastCard/CastCard';
+import { PageTitle } from '@/components/common/PageTitle/PageTitle';
 
 export async function loader({
   params,
@@ -28,6 +29,7 @@ export const MovieDetailsPage: React.FC = () => {
 
   return (
     <Layout>
+      <PageTitle>{movie.title}</PageTitle>
       <main className={`movie-details movie-details--${genreClassModifier}`}>
         {movie && (
           <>
