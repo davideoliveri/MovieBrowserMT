@@ -1,40 +1,16 @@
-# **Movie Browser \- Technical Assessment**
-
-This project is a feature-rich web application built to fulfill a technical assessment. It allows users to browse movies by category, view detailed information, and manage a personal wishlist. The application is built from the ground up using modern tools like React, Vite, and TypeScript, with a strong emphasis on code quality, testing, and Server-Side Rendering (SSR).
-
----
+# **Movie Browser**
 
 ## **✨ Features**
 
 - **Homepage with Carousels**: The main page displays three distinct carousels, each representing a different movie genre.
 - **Detailed Movie Pages**: Clicking on any movie card navigates the user to a dedicated details page.
 - **Dynamic Theming**: The movie detail page dynamically changes its appearance (fonts, button styles, and background) based on the movie's primary genre, providing a unique user experience.
+  > ⚠️ Many movies have more than one genre. For consistency I decided to use the first one listed to theme the page. Hence you may sometimes see a non-style-specific page for, let's say, a sci-fi movie because the first genere returned is not horror (e.g. M3GAN 2.0: `/moviedetails/1071585`, included in the science fiction carousel, its first genre is "action", for which I haven't created a specific style.)
 - **Wishlist Functionality**: Users can add or remove movies from a personal wishlist. This state is preserved across sessions using `localStorage`.
 - **Dedicated Wishlist Page**: A separate page displays all the movies the user has added to their wishlist, with options for sorting and pagination.
 - **Server-Side Rendering (SSR)**: The application is fully server-side rendered for improved SEO and initial page load performance.
 
----
-
-## **🛠️ Tech Stack & Architecture**
-
 This project was handcrafted without using frameworks like Next.js or Create React App to demonstrate a deep understanding of the build process and application architecture.
-
-- **Core**:
-  - **React 19**: For building the user interface.
-  - **TypeScript**: For robust, scalable, and maintainable code with static typing.
-  - **Vite**: As the build tool, chosen for its incredible development speed and powerful, native SSR support.
-  - **React Router v6**: For all client-side and server-side routing, including data loading via `loader` functions.
-- **Backend & SSR**:
-  - **Node.js \+ Express**: A minimal Express server is used to handle server-side rendering in both development and production environments.
-- **Styling**:
-  - **SCSS**: Used for all styling, following a structured, component-based approach without relying on CSS-in-JS or utility-first frameworks as per requirements.
-- **Testing**:
-  - **Vitest**: The testing framework, chosen for its seamless integration with Vite and its Jest-compatible API.
-  - **React Testing Library**: For writing user-centric component tests that are resilient to implementation changes.
-  - **MSW (Mock Service Worker)**: To intercept API requests and provide reliable mock data, ensuring tests are fast and isolated from network dependencies.
-  - **`@testing-library/user-event`**: To simulate real user interactions in tests.
-- **Code Quality**:
-  - **ESLint & Prettier**: For maintaining a consistent and high-quality codebase.
 
 ---
 
