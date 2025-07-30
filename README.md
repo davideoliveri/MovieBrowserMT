@@ -5,7 +5,7 @@
 - **Homepage with Carousels**: The main page displays three distinct carousels, each representing a different movie genre.
 - **Detailed Movie Pages**: Clicking on any movie card navigates the user to a dedicated details page.
 - **Dynamic Theming**: The movie detail page dynamically changes its appearance (fonts, button styles, and background) based on the movie's primary genre, providing a unique user experience.
-  > ⚠️ Many movies have more than one genre. For consistency I decided to use the first one listed to theme the page. Hence you may sometimes see a non-style-specific page for, let's say, a sci-fi movie because the first genere returned is not horror (e.g. M3GAN 2.0: `/moviedetails/1071585`, included in the science fiction carousel, its first genre is "action", for which I haven't created a specific style.)
+  > ⚠️ Many movies have more than one genre. For consistency and predictability I decided to use the first one returned to theme the page. Hence you may sometimes see a non-style-specific page for, let's say, a sci-fi movie because the first genere returned is not sci-fi (e.g. M3GAN 2.0: `/moviedetails/1071585`, included in the science fiction carousel, its first genre is "action", for which I haven't created a specific style.)
 - **Wishlist Functionality**: Users can add or remove movies from a personal wishlist. This state is preserved across sessions using `localStorage`.
 - **Dedicated Wishlist Page**: A separate page displays all the movies the user has added to their wishlist, with options for sorting and pagination.
 - **Server-Side Rendering (SSR)**: The application is fully server-side rendered for improved SEO and initial page load performance.
