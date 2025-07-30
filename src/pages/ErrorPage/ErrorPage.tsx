@@ -1,5 +1,6 @@
 import { useRouteError, isRouteErrorResponse, Link } from 'react-router-dom';
 import { Layout } from '@/components/Layout/Layout';
+import { PageTitle } from '@/components/common/PageTitle/PageTitle';
 
 export function ErrorPage() {
   const error = useRouteError();
@@ -17,6 +18,7 @@ export function ErrorPage() {
 
   return (
     <Layout>
+      <PageTitle>😱 Error</PageTitle>
       <main className="error-page">
         <h1 className="h1">Oops!</h1>
         {errorStatus && (
