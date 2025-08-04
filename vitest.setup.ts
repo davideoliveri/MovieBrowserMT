@@ -1,6 +1,6 @@
 import '@testing-library/jest-dom/vitest';
 import { beforeAll, afterEach, afterAll } from 'vitest';
-import { server } from './src/mocks/node'; // adjust path if needed
+import { server } from './src/mocks/node';
 
 beforeAll(() => server.listen());
 afterEach(() => server.resetHandlers());

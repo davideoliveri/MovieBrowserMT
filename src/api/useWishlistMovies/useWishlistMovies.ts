@@ -17,14 +17,6 @@ interface UseWishlistMoviesResult {
 export function useWishlistMovies(
   opts: UseWishlistMoviesOptions = {}
 ): UseWishlistMoviesResult {
-  // const { state: entries } = useWishlist();
-  // const { page = 1, perPage = 20, sortBy = 'dateAdded', order = 'desc' } = opts;
-
-  // const [cache, setCache] = useState<Record<string, WishlistMovie>>({});
-
-  // const [loading, setLoading] = useState(false);
-  // const [error, setError] = useState<string | null>(null);
-
   const { state: entries } = useWishlist();
   const { page = 1, perPage = 20, sortBy = 'dateAdded', order = 'desc' } = opts;
   const [cache, setCache] = useState<Record<string, MovieDetailsData>>({});
